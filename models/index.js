@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/cookie_cutter-db");
+mongoose.connect("mongodb://localhost/user-db");
 
 mongoose.set("debug", true);
 

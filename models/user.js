@@ -16,7 +16,6 @@ var userSchema = new mongoose.Schema({
 	},
 	dateJoined: Date,
 	userImage: String,
-
 });
 
 var User = mongoose.model("user", userSchema);
