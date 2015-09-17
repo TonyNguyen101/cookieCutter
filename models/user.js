@@ -16,6 +16,10 @@ var userSchema = new mongoose.Schema({
 	},
 	dateJoined: Date,
 	userImage: String,
+	recipes: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Recipe"
+	}]
 });
 
 var User = mongoose.model("user", userSchema);
