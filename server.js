@@ -1,4 +1,3 @@
-
 var express 					= require('express'),
     app 							= express(),
     bodyParser 				= require('body-parser'),
@@ -6,11 +5,12 @@ var express 					= require('express'),
     session 					= require("cookie-session"),
     morgan 						= require("morgan"),    
     db 								= require("./models"),
+    
     apiRouter 				= express.Router();
     // loginMiddleware 	= require("./middleware/loginHelper"),
     // routeMiddleware 	= require("./middleware/routeHelper");
 
-// app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 app.use(morgan('tiny'));
 app.use(express.static(__dirname + '/public'));
@@ -25,14 +25,9 @@ app.use(function (req, res, next) {
 	next();
 });
 
-
-
-
-
-
 //NEW
 //INDEX
-//ROOT
+
 //CREATE
 apiRouter.route('/users')
 .get(function (req, res) {
@@ -46,7 +41,6 @@ apiRouter.route('/users')
 		res.json({ message: 'User create!'});
 	});
 });
-
 
 
 //SHOW
@@ -78,9 +72,12 @@ apiRouter.route('/users/:userId')
 	});
 });
 
-
-
+//ROOT
 app.use('/', apiRouter);
+app.get('/', function (req, res) {
+	res.render('index.ejs');
+});
+
 
 //ERROR
 app.get('*', function(req,res){
