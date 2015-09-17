@@ -1,58 +1,5 @@
 var mongoose = require('mongoose');
-
-var ingredientSchema = new mongoose.Schema({
-	ingredientName: String,
-	type: {
-		type: String,
-		default: "ingredient" 
-	},
-	imperialQuantity: Number,
-	imperialUnits: String,
-	description: String,
-	comments: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Comment"
-	}]
-});
-
-
-var actionSchema = new mongoose.Schema({
-	actionName: String,
-	type: {
-		type: String,
-		default: "action" 
-	},
-	formVisible: {
-		type: Boolean,
-		default: false 
-	},
-	time: Number,
-	description: String,
-	ingredients: [ingredientSchema],
-	comments: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Comment"
-	}]
-});
-
-var vesselSchema = new mongoose.Schema({
-	vesselName: String,
-	type: {
-		type: String,
-		default: "vessel" 
-	},
-	formVisible: {
-		type: Boolean,
-		default: false 
-	},
-	description: String,
-	actions: [actionSchema],
-	comments: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Comment"
-	}]
-});
-
+// TODO, remove type
 var recipeSchema = new mongoose.Schema({
 	title: String,
 	type: {
@@ -72,8 +19,6 @@ var recipeSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now
 	},
-	allIngredients: [ingredientSchema],	
-	vessels: [vesselSchema],
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User"
@@ -81,6 +26,55 @@ var recipeSchema = new mongoose.Schema({
 	comments: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Comment"
+	}],
+	borrowers: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User"
+	}],
+	// allIngredients Array w/ nested ingredients: for faster ingredient search
+	allIngredients: [{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Ingredient"
+		}],
+	// vessels array	
+	vessels: [{
+		vesselName: String,
+		type: {
+			type: String,
+			default: "vessel" 
+		},
+		formVisible: {
+			type: Boolean,
+			default: false 
+		},
+		description: String,
+		comments: [{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Comment"
+		}],
+		// actions array
+		actions: [{
+			actionName: String,
+			type: {
+				type: String,
+				default: "action" 
+			},
+			formVisible: {
+				type: Boolean,
+				default: false 
+			},
+			time: Number,
+			description: String,
+			comments: [{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "Comment"
+			}],
+			// ingredients array
+			ingredients: [{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "Ingredient"
+			}]
+		}]	
 	}]
 });
 

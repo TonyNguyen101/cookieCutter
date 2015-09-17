@@ -19,6 +19,10 @@ var userSchema = new mongoose.Schema({
 	recipes: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Recipe"
+	}],
+	comments: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Comment"
 	}]
 });
 
