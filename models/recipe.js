@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
 
 var ingredientSchema = new mongoose.Schema({
 	ingredientName: String,
-	type: "ingredient",
+	type: {
+		type: String,
+		default: "ingredient" 
+	},
 	imperialQuantity: Number,
 	imperialUnits: String,
 	description: String,
@@ -15,8 +18,14 @@ var ingredientSchema = new mongoose.Schema({
 
 var actionSchema = new mongoose.Schema({
 	actionName: String,
-	type: "action",
-	formVisible: Boolean,
+	type: {
+		type: String,
+		default: "action" 
+	},
+	formVisible: {
+		type: Boolean,
+		default: false 
+	},
 	time: Number,
 	description: String,
 	ingredients: [ingredientSchema],
@@ -28,8 +37,14 @@ var actionSchema = new mongoose.Schema({
 
 var vesselSchema = new mongoose.Schema({
 	vesselName: String,
-	type: "vessel",
-	formVisible: Boolean,
+	type: {
+		type: String,
+		default: "vessel" 
+	},
+	formVisible: {
+		type: Boolean,
+		default: false 
+	},
 	description: String,
 	actions: [actionSchema],
 	comments: [{
@@ -40,13 +55,23 @@ var vesselSchema = new mongoose.Schema({
 
 var recipeSchema = new mongoose.Schema({
 	title: String,
-	type: "recipe",
-	formVisible: Boolean,
+	type: {
+		type: String,
+		default: "recipe" 
+	},
+	formVisible: {
+		type: Boolean,
+		default: false 
+	},
 	image: [String],
 	description: String,
 	// Do I have to change this to a String to account for decmials and factions?
 	totalTime: Number,
 	score: Number,
+	updatedDate: {
+		type: Date,
+		default: Date.now
+	},
 	allIngredients: [ingredientSchema],	
 	vessels: [vesselSchema],
 	user: {

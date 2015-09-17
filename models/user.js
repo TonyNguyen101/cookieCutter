@@ -10,7 +10,7 @@ var userSchema = new mongoose.Schema({
 		required: true
 	},
 	passwordHash: String,
-	updated: {
+	updatedDate: {
 		type: Date,
 		default: Date.now
 	},
