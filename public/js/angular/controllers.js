@@ -13,55 +13,55 @@ app.controller('RecipeApp', ['$scope', '$location', function ($scope, $location)
 		score: 0,
 		allIngredients: [],		
 		vessels: [
-		// {
-		// 	vesselName: 'small mixing bowl',
-		// 	type: 'vessel',
-		// 	formVisible: false,
-		// 	actions: [{
-		// 		actionName: "mix in",
-		// 		type: 'action',
-		// 		formVisible: false,
-		// 		time: 7,
-		// 		ingredients: [{
-		// 			ingredientName: 'chocolate chips',
-		// 			type: 'ingredient',
-  //    			imperialQuantity: 4.5,
-		// 			imperialUnits: "oz",
-		// 			}, {
-		// 			ingredientName: 'butter',
-		// 			type: 'ingredient',
-  //    			imperialQuantity: 4.5,
-		// 			imperialUnits: "stick",
-		// 		}]
-		// 	}]
-		// },{
-		// 	vesselName: 'large mixing bowl',
-		// 	type: 'vessel',
-		// 	formVisible: false,
-		// 	actions: [{
-		// 		actionName: "slowly mix in",
-		// 		type: 'action',
-		// 		formVisible: false,
-		// 		time: 10,
-		// 		ingredients: [{
-		// 			ingredientName: 'sugar',
-		// 			type: 'ingredient',					
-  //    			imperialQuantity: 1.5,
-		// 			imperialUnits: "cup",
-		// 		}]
-		// 	},{ 
-		// 		actionName: "blend in",
-		// 		type: 'action',
-		// 		formVisible: false,
-		// 		time: 20,
-		// 		ingredients: [{
-		// 			ingredientName: 'flour',
-		// 			type: 'ingredient',					
-  //    			imperialQuantity: 2,
-		// 			imperialUnits: "cup",
-		// 		}]
-		// 	}]
-		// }
+		{
+			vesselName: 'small mixing bowl',
+			type: 'vessel',
+			formVisible: false,
+			actions: [{
+				actionName: "mix in",
+				type: 'action',
+				formVisible: false,
+				time: 7,
+				ingredients: [{
+					ingredientName: 'chocolate chips',
+					type: 'ingredient',
+     			imperialQuantity: 4.5,
+					imperialUnits: "oz",
+					}, {
+					ingredientName: 'butter',
+					type: 'ingredient',
+     			imperialQuantity: 4.5,
+					imperialUnits: "stick",
+				}]
+			}]
+		},{
+			vesselName: 'large mixing bowl',
+			type: 'vessel',
+			formVisible: false,
+			actions: [{
+				actionName: "slowly mix in",
+				type: 'action',
+				formVisible: false,
+				time: 10,
+				ingredients: [{
+					ingredientName: 'sugar',
+					type: 'ingredient',					
+     			imperialQuantity: 1.5,
+					imperialUnits: "cup",
+				}]
+			},{ 
+				actionName: "blend in",
+				type: 'action',
+				formVisible: false,
+				time: 20,
+				ingredients: [{
+					ingredientName: 'flour',
+					type: 'ingredient',					
+     			imperialQuantity: 2,
+					imperialUnits: "cup",
+				}]
+			}]
+		}
 		]
 	}];
 
@@ -89,7 +89,7 @@ app.controller('RecipeApp', ['$scope', '$location', function ($scope, $location)
 		accept: function (sourceNodeScope, destNodeScope, destIndex) {
 			var srcType = sourceNodeScope.$element.attr('data-type');
 			var dstType = destNodeScope.$element.attr('data-type');
-			// console.log("From: " + srcType + " To: " + dstType);
+			console.log("From: " + srcType + " To: " + dstType);
 			if ((srcType === "action" && dstType === "vessel") || 
 				(srcType === "ingredient" && dstType === "action") || 
 				(srcType === "vessel" && dstType === "recipe") ){
@@ -104,15 +104,15 @@ app.controller('RecipeApp', ['$scope', '$location', function ($scope, $location)
 	};
 
 	// Steal node ID format
- 	$scope.newSubItem = function (scope) {
-    console.log(scope);
-    var nodeData = scope.$modelValue;
-    nodeData.nodes.push({
-      id: nodeData.id * 10 + nodeData.nodes.length,
-      title: nodeData.title + '.' + (nodeData.nodes.length + 1),
-      nodes: []
-    });
-  };
+ 	// $scope.newSubItem = function (scope) {
+  //   console.log(scope);
+  //   var nodeData = scope.$modelValue;
+  //   nodeData.nodes.push({
+  //     id: nodeData.id * 10 + nodeData.nodes.length,
+  //     title: nodeData.title + '.' + (nodeData.nodes.length + 1),
+  //     nodes: []
+  //   });
+  // };
 
   $scope.addVessel = function () {
   	if (this.newVessel.vesselName !== '' && this.newVessel.time !== '') {

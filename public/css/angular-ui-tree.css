@@ -1,0 +1,66 @@
+.angular-ui-tree {
+}
+
+/*No recipe space*/
+.angular-ui-tree-empty {
+    border: 1px solid #bbb;
+    min-height: 100px;
+    /*background-color: #e5e5e5;*/
+    /*background-image: -webkit-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), -webkit-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);*/
+    /*background-image: -moz-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), -moz-linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);*/
+    /*background-image: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff), linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);*/
+    background-size: 600px 600px;
+    /*background-position: 0 0, 30px 30px;*/
+}
+
+.angular-ui-tree-nodes {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.angular-ui-tree-nodes .angular-ui-tree-nodes {
+    padding-left: 20px;
+}
+
+.angular-ui-tree-node, .angular-ui-tree-placeholder {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    /*min-height: 20px;*/
+    /*line-height: 20px;*/
+}
+
+.angular-ui-tree-hidden {
+    display: none;
+}
+
+.angular-ui-tree-placeholder {
+    margin: 5px 0;
+    padding: 0;
+    /*min-height: 300px;*/
+}
+
+.angular-ui-tree-handle {
+    cursor: move;
+    cursor: -webkit-grab;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 20px;
+    line-height: 20px;
+}
+
+.angular-ui-tree-drag {
+    transform: rotate(3deg);
+    cursor: move;
+    /*Need to make this grabbing fist work somehow*/
+    cursor: -webkit-grabbing;
+    position: absolute;
+    pointer-events: none;
+    z-index: 999;
+    opacity: .8;
+}

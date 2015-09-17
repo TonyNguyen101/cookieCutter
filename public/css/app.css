@@ -1,0 +1,62 @@
+
+.container {
+    font-family: 'Bitter', serif;
+    border: 2px solid gray;
+    background-color: #F9F5EA;
+    /*border-radius: 7px;*/
+    min-height: 400px
+}
+
+/*Ghost Placeholder*/
+.angular-ui-tree-placeholder {
+    background: #AEB2B5;
+    /*border-radius: 7px;*/
+    /*border-top-right-radius: 0;*/
+    /*border-bottom-right-radius: 0;*/
+}
+
+.angular-ui-tree-placeholder .actionBox {
+    /*border-radius: 7px;*/
+    /*border-top-right-radius: 0;*/
+    /*border-bottom-right-radius: 0;*/
+}
+
+.vesselBox {
+    background-color: #377F83;
+    /*border-radius: 7px;*/
+    min-height: 100px;
+    /*need this bc default is 15 r/l*/
+    padding: 0;
+    margin-bottom: 15px;
+}
+.vesselBox:hover  {
+    /*background-color: #377F83;*/
+    /*border-radius: 10px;*/
+    opacity: .9;
+    -webkit-filter: brightness(90%);
+}
+
+.actionBox {
+    background-color: #EC8469;
+    border-radius: 7px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    min-height: 80px;
+}
+.actionBox:hover  {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    /*opacity: .9;*/
+    /*-webkit-filter: brightness(90%);*/
+}
+
+.ingredientBox {
+    background-color: #E6AE33;
+    border-radius: 7px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.ingredientBox:hover  {
+    /*opacity: .9;*/
+    /*-webkit-filter: brightness(90%);*/
+}
