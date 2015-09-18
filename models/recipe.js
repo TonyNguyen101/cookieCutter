@@ -1,11 +1,7 @@
 var mongoose = require('mongoose');
-// TODO, remove type
+
 var recipeSchema = new mongoose.Schema({
 	title: String,
-	type: {
-		type: String,
-		default: "recipe" 
-	},
 	formVisible: {
 		type: Boolean,
 		default: false 
@@ -39,10 +35,6 @@ var recipeSchema = new mongoose.Schema({
 	// vessels array	
 	vessels: [{
 		vesselName: String,
-		type: {
-			type: String,
-			default: "vessel" 
-		},
 		formVisible: {
 			type: Boolean,
 			default: false 
@@ -55,10 +47,6 @@ var recipeSchema = new mongoose.Schema({
 		// actions array
 		actions: [{
 			actionName: String,
-			type: {
-				type: String,
-				default: "action" 
-			},
 			formVisible: {
 				type: Boolean,
 				default: false 

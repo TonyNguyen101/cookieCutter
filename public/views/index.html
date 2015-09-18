@@ -3,7 +3,7 @@
 
   <div class="container">
 
-    <div ng-model="recipes[0]" data-type='{{recipe[0].type}}'>    
+    <div ng-model="recipes[0]" data-type='recipe'>    
       <h3>{{recipes[0].title}}</h3>
       <h4>{{recipes[0].totalTime}} mins</h4>
       <br>
@@ -35,7 +35,7 @@
       <!-- <div ui-tree="movementOptions" data-nodrop-enabled="true"> -->
 
 <!--         <ul ui-tree-nodes ng-model="recipes[0].allIngredients" data-type="action">
-          <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat="ingredient in recipes[0].allIngredients" data-type="{{ingredient.type}}">
+          <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat="ingredient in recipes[0].allIngredients" data-type="ingredient">
             {{ingredient.imperialQuantity}}
             {{ingredient.imperialUnits}}                        
             {{ingredient.ingredientName}}            
@@ -45,8 +45,8 @@
 
 
       <div ui-tree="movementOptions" class="col-xs-7">
-        <ol ui-tree-nodes ng-model="recipes[0].vessels" data-type='{{recipes[0].type}}'>
-          <li ui-tree-node ui-tree-handle ng-repeat='vessel in recipes[0].vessels' data-type='{{vessel.type}}'>  
+        <ol ui-tree-nodes ng-model="recipes[0].vessels" data-type='recipe'>
+          <li ui-tree-node ui-tree-handle ng-repeat='vessel in recipes[0].vessels' data-type='vessel'>  
             
              
             <div class="row vesselBox">
@@ -54,8 +54,8 @@
               <input type="text" ng-model="vessel.vesselName">
               <!-- <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a> -->
               <div ui-tree="movementOptions">
-                <ol ui-tree-nodes ng-model='vessel.actions' data-type='{{vessel.type}}'>
-                    <li ui-tree-node ui-tree-handle ng-repeat='action in vessel.actions' data-type='{{action.type}}'>
+                <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
+                    <li ui-tree-node ui-tree-handle ng-repeat='action in vessel.actions' data-type='action'>
                       <div class="row">
                         <div class="timeBox col-xs-1 col-sm-1">{{action.time}}</div>
                         <div class="actionBox col-sm-11">
@@ -65,8 +65,8 @@
                           <!-- <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a> -->
 
                           <div ui-tree="movementOptions">
-                            <ol ui-tree-nodes ng-model='action.ingredients' data-type='{{action.type}}'>
-                              <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='{{ingredient.type}}'>
+                            <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>
+                              <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='ingredient'>
                                   {{ingredient.imperialQuantity}}
                                   {{ingredient.imperialUnits}}                        
                                   {{ingredient.ingredientName}}

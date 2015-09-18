@@ -5,7 +5,7 @@
 	app.config(function ($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {
-				templateUrl: 'views/recipeApp/index.html',
+				templateUrl: 'views/index.html',
 				controller: 'RecipeApp'
 			})
 			// .when('/users/:usersId', {

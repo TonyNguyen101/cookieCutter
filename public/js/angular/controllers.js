@@ -3,7 +3,6 @@
 app.controller('RecipeApp', ['$scope', '$location', function ($scope, $location) {
   $scope.recipes = [{
 		title: "Chewie Chocolate Chip Cookies",
-		type: 'recipe', 
 		formVisible: false,
 		author: "Tony Nguyen", 
 		image: "http://s3.amazonaws.com/gmi-digital-library/2ea0aafc-2942-4134-947f-847c043411ae.jpg", 
@@ -15,48 +14,39 @@ app.controller('RecipeApp', ['$scope', '$location', function ($scope, $location)
 		vessels: [
 		{
 			vesselName: 'small mixing bowl',
-			type: 'vessel',
 			formVisible: false,
 			actions: [{
 				actionName: "mix in",
-				type: 'action',
 				formVisible: false,
 				time: 7,
 				ingredients: [{
 					ingredientName: 'chocolate chips',
-					type: 'ingredient',
      			imperialQuantity: 4.5,
 					imperialUnits: "oz",
 					}, {
 					ingredientName: 'butter',
-					type: 'ingredient',
      			imperialQuantity: 4.5,
 					imperialUnits: "stick",
 				}]
 			}]
 		},{
 			vesselName: 'large mixing bowl',
-			type: 'vessel',
 			formVisible: false,
 			actions: [{
 				actionName: "slowly mix in",
-				type: 'action',
 				formVisible: false,
 				time: 10,
 				ingredients: [{
-					ingredientName: 'sugar',
-					type: 'ingredient',					
+					ingredientName: 'sugar',	
      			imperialQuantity: 1.5,
 					imperialUnits: "cup",
 				}]
 			},{ 
 				actionName: "blend in",
-				type: 'action',
 				formVisible: false,
 				time: 20,
 				ingredients: [{
-					ingredientName: 'flour',
-					type: 'ingredient',					
+					ingredientName: 'flour',				
      			imperialQuantity: 2,
 					imperialUnits: "cup",
 				}]
@@ -116,7 +106,6 @@ app.controller('RecipeApp', ['$scope', '$location', function ($scope, $location)
 
   $scope.addVessel = function () {
   	if (this.newVessel.vesselName !== '' && this.newVessel.time !== '') {
-  		this.newVessel.type = 'vessel';
   		this.formVisible = false;
   		this.newVessel.actions = [];
 			this.recipes[0].vessels.push(this.newVessel);
@@ -125,7 +114,6 @@ app.controller('RecipeApp', ['$scope', '$location', function ($scope, $location)
   };
   $scope.addAction = function () {
    	if (this.newAction.actionName !== ''){
-   		this.newAction.type = 'action';
    		this.formVisible = false;
    		this.newAction.ingredients = [];
 			this.vessel.actions.push(this.newAction);
@@ -136,7 +124,6 @@ app.controller('RecipeApp', ['$scope', '$location', function ($scope, $location)
   //Add ingredient in actions
   $scope.addIngredientToAction = function () {
   	if (this.newIngredient.ingredientName !== '' && this.newIngredient.imperialQuantity !== ''){
-  		this.newIngredient.type = 'ingredient';
   		// TODO: make clone of new ingredient instance and add to ingredients on recipe scope
 			this.action.ingredients.push(this.newIngredient);
 			$scope.recipes[0].allIngredients.push(this.newIngredient);
@@ -148,7 +135,6 @@ app.controller('RecipeApp', ['$scope', '$location', function ($scope, $location)
 		console.log(newAllIngredient);
 		console.log(this.newIngredient);
 		if (newAllIngredient.ingredientName !== '' && newAllIngredient.imperialQuantity !== ''){
-  		newAllIngredient.type = 'ingredient';
   		this.recipes[0].allIngredients.push(newAllIngredient);
   		// TODO: make clone of new ingredient instance and add to ingredients on recipe scope
   		this.newIngredient = '';
