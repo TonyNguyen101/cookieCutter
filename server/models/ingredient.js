@@ -5,10 +5,6 @@ var ingredientSchema = new mongoose.Schema({
 	imperialQuantity: Number,
 	imperialUnits: String,
 	description: String,
-	recipes: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "Recipe"
-	}],
 	comments: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Comment"

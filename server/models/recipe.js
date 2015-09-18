@@ -6,11 +6,18 @@ var recipeSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false 
 	},
-	image: [String],
+	// Change img String to [String] to be able to add more images
+	image: String,
 	description: String,
 	// Do I have to change this to a String to account for decmials and factions?
-	totalTime: Number,
-	score: Number,
+	totalTime: { 
+		type: Number,
+		default: 0
+	},
+	score: { 
+		type: Number,
+		default: 0
+	},
 	updatedDate: {
 		type: Date,
 		default: Date.now
@@ -51,7 +58,10 @@ var recipeSchema = new mongoose.Schema({
 				type: Boolean,
 				default: false 
 			},
-			time: Number,
+			time: {
+				type: Number,
+				default: 0
+			},
 			description: String,
 			comments: [{
 				type: mongoose.Schema.Types.ObjectId,

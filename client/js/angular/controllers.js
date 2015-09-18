@@ -54,14 +54,14 @@ app.controller('RecipeApp', ['$scope', '$location', '$http', 'Recipe', function 
 	// 	]
 	// };
 
-	//Populate the recipes's allIngredients array
-	for (var i = 0; i < $scope.Recipe.vessels.length; i++) {
-		for (var j = 0; j < $scope.Recipe.vessels[i].actions.length; j++){
-			for (var k = 0; k < $scope.Recipe.vessels[i].actions[j].ingredients.length; k++){
-				$scope.Recipe.allIngredients.push($scope.Recipe.vessels[i].actions[j].ingredients[k]);
-			}
-		}
-	}
+	// //Populate the recipes's allIngredients array
+	// for (var i = 0; i < $scope.Recipe.vessels.length; i++) {
+	// 	for (var j = 0; j < $scope.Recipe.vessels[i].actions.length; j++){
+	// 		for (var k = 0; k < $scope.Recipe.vessels[i].actions[j].ingredients.length; k++){
+	// 			$scope.Recipe.allIngredients.push($scope.Recipe.vessels[i].actions[j].ingredients[k]);
+	// 		}
+	// 	}
+	// }
 
   $scope.toggleForm = function (scope) {
   	var nodeData = scope.$modelValue;
@@ -125,7 +125,7 @@ app.controller('RecipeApp', ['$scope', '$location', '$http', 'Recipe', function 
   	if (this.newIngredient.ingredientName !== '' && this.newIngredient.imperialQuantity !== ''){
   		// TODO: make clone of new ingredient instance and add to ingredients on recipe scope
 			this.action.ingredients.push(this.newIngredient);
-			$scope.recipes[0].allIngredients.push(this.newIngredient);
+			$scope.Recipe.allIngredients.push(this.newIngredient);
   		this.newIngredient = '';  		
   	}
   };
@@ -134,7 +134,7 @@ app.controller('RecipeApp', ['$scope', '$location', '$http', 'Recipe', function 
 		console.log(newAllIngredient);
 		console.log(this.newIngredient);
 		if (newAllIngredient.ingredientName !== '' && newAllIngredient.imperialQuantity !== ''){
-  		this.recipes[0].allIngredients.push(newAllIngredient);
+  		this.Recipe.allIngredients.push(newAllIngredient);
   		// TODO: make clone of new ingredient instance and add to ingredients on recipe scope
   		this.newIngredient = '';
   	}	
