@@ -1,23 +1,21 @@
-// (function () {
-//   'use strict';
+// var app = angular.module('testApp', ['ui.tree', 'ngRoute', 'ngAnimate']);
 
-	var app = angular.module("cookieCutter", ['ui.tree', 'ngRoute', 'ngAnimate']);
-	app.config(function ($routeProvider, $locationProvider) {
-		$routeProvider
-			.when('/', {
-				templateUrl: 'views/index.html',
-				controller: 'RecipeApp'
-			})
-			// .when('/users/:usersId', {
-			// 	templateUrl: 'partials/user.html',
-			// 	controller: 'ShowController'
-			// })
-			.otherwise({
-				redirectTo: '/'
-			});
-	});
+var app = angular.module("cookieCutter", ['ui.tree', 'ngRoute', 'ngAnimate']);
 
-// })();
+app.config(function ($routeProvider, $locationProvider) {
+	$routeProvider
+		.when('/', {
+			templateUrl: 'views/index.html',
+			controller: 'RecipeApp'
+		})
+		// .when('/users/:usersId', {
+		// 	templateUrl: 'partials/user.html',
+		// 	controller: 'ShowController'
+		// })
+		.otherwise({
+			redirectTo: '/'
+		});
+});
 
 
 

@@ -1,41 +1,40 @@
 <h1>I'm the html page from the views folder</h1>
 
-
+{{Recipe}}
   <div class="container">
-    Recipes needs to be an array with one oject since we need to be abo
-    <div ng-model="recipes[0]" data-type='recipe'>    
-      <h3>{{recipes[0].title}}</h3>
-      <h4>{{recipes[0].totalTime}} mins</h4>
+    <div ng-model="Recipe" data-type='recipe'>    
+      <h3>{{Recipe.title}}</h3>
+      <h4>{{Recipe.totalTime}} mins</h4>
       <br>
-      <img height="150" src='{{recipes[0].image}}'>
-      
+      <img height="150" src='{{Recipe.image}}'>
       <h3>List of all ingredients</h3>
-        
-      <ul ng-repeat='ingredient in recipes[0].allIngredients'>
+      <ul ng-repeat='ingredient in Recipe.allIngredients'>
         <li>            
           {{ingredient.imperialQuantity}}
           {{ingredient.imperialUnits}}                        
           {{ingredient.ingredientName}}         
         </li>     
       </ul>
-
-          <div class="hideForm">
-            <form name="ingredientForm" ng-submit="addIngredientToAllIngredients(newIngredient)" class="form-group" novalidate>
-            <!-- New All Ingredients Form -->
-            <input type="text" ng-model="newIngredient.imperialQuantity" class="form-control" placeholder="ammount">
-            <input type="text" ng-model="newIngredient.imperialUnits" class="form-control" placeholder="unit">        
-            <input type="text" ng-model="newIngredient.ingredientName" class="form-control" placeholder="name">
-            <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
-            </form>
-          </div> 
+      
+      <div class="hideForm">
+        <form name="ingredientForm" ng-submit="addIngredientToAllIngredients(newIngredient)" class="form-group" novalidate>
+        <!-- New All Ingredients Form -->
+        <input type="text" ng-model="newIngredient.imperialQuantity" class="form-control" placeholder="ammount">
+        <input type="text" ng-model="newIngredient.imperialUnits" class="form-control" placeholder="unit">        
+        <input type="text" ng-model="newIngredient.ingredientName" class="form-control" placeholder="name">
+        <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
+        </form>
+      </div> 
 
       <!-- <h3>Click&Drag to add to actions </h3>  -->
       
       <!-- <div ui-tree="movementOptions" data-clone-enabled="true" data-nodrop-enabled="true"> -->
       <!-- <div ui-tree="movementOptions" data-nodrop-enabled="true"> -->
+}
+}
 
-<!--         <ul ui-tree-nodes ng-model="recipes[0].allIngredients" data-type="action">
-          <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat="ingredient in recipes[0].allIngredients" data-type="ingredient">
+<!--         <ul ui-tree-nodes ng-model="recipe.allIngredients" data-type="action">
+          <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat="ingredient in recipe.allIngredients" data-type="ingredient">
             {{ingredient.imperialQuantity}}
             {{ingredient.imperialUnits}}                        
             {{ingredient.ingredientName}}            
@@ -45,8 +44,8 @@
 
 
       <div ui-tree="movementOptions" class="col-xs-7">
-        <ol ui-tree-nodes ng-model="recipes[0].vessels" data-type='recipe'>
-          <li ui-tree-node ui-tree-handle ng-repeat='vessel in recipes[0].vessels' data-type='vessel'>  
+        <ol ui-tree-nodes ng-model="Recipe.vessels" data-type='recipe'>
+          <li ui-tree-node ui-tree-handle ng-repeat='vessel in Recipe.vessels' data-type='vessel'>  
              
             <div class="row vesselBox">
               {{vessel.vesselName}}
@@ -106,9 +105,6 @@
                 <a href="" ng-click="toggleForm(this)">New action form!</a>
               </div>
             </div>
-
-
-
           </li>
         </ol>
 
@@ -123,6 +119,6 @@
 
       </div>
     <div class="col-sm-5">
-      <pre class="code">{{recipes | json}}</pre>
+      <pre class="code">{{Recipe | json}}</pre>
     </div>  
   </div>

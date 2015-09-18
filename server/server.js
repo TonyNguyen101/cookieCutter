@@ -13,7 +13,11 @@ var express 					= require('express'),
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 app.use(morgan('tiny'));
-app.use(express.static(__dirname + '/public'));
+
+var oldFolderIndex = __dirname.length - 7;
+var rootDir = __dirname.slice(0,oldFolderIndex);
+
+app.use(express.static(rootDir + '/client'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
@@ -23,6 +27,13 @@ app.use(function (req, res, next) {
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, PATCH');
 	res.setHeader('Access-Control-Allow-Headers', 'X-Requested0With,content-type, Authorization');
 	next();
+});
+
+
+app.use('/api', apiRouter);
+//ROOT
+app.get('/', function (req, res) {
+	res.render('index');
 });
 
 //INDEX
@@ -35,10 +46,9 @@ apiRouter.route('/api/users')
 .post(function (req, res) {
 	db.User.create(req.body, function (error) {
 		if (error) return res.json({error:error.message});
-		res.json({ message: 'User create!'});
+		res.json({ message: 'User created!'});
 	});
 });
-
 //SHOW
 apiRouter.route('/api/users/:userId')
 .get(function (req, res) {
@@ -66,11 +76,24 @@ apiRouter.route('/api/users/:userId')
 	});
 });
 
-//ROOT
-app.use('/api', apiRouter);
-app.get('/', function (req, res) {
-	res.render('index.ejs');
+
+
+
+
+// Recipe Routes
+apiRouter.route('/api/recipes')
+.get(function (req, res) {
+	db.Recipe.find({}, function (error, response) {
+		res.json(response);
+	});
+})
+.post(function (req, res) {
+	db.Recipe.create(req.body, function (error) {
+		if (error) return	res.json({error: error.message});
+		res.json({message: "Recipe created!"});
+	});
 });
+
 
 
 //ERROR
@@ -79,5 +102,5 @@ app.get('*', function(req,res){
 });
 
 app.listen(3001, function(){
-  console.log("Server is listening on port 3000");
+  console.log("Server is listening on port 3001");
 });
