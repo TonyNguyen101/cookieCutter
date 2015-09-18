@@ -2,7 +2,7 @@
 
 
   <div class="container">
-
+    Recipes needs to be an array with one oject since we need to be abo
     <div ng-model="recipes[0]" data-type='recipe'>    
       <h3>{{recipes[0].title}}</h3>
       <h4>{{recipes[0].totalTime}} mins</h4>
@@ -47,7 +47,6 @@
       <div ui-tree="movementOptions" class="col-xs-7">
         <ol ui-tree-nodes ng-model="recipes[0].vessels" data-type='recipe'>
           <li ui-tree-node ui-tree-handle ng-repeat='vessel in recipes[0].vessels' data-type='vessel'>  
-            
              
             <div class="row vesselBox">
               {{vessel.vesselName}}
