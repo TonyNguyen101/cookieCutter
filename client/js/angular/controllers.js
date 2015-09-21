@@ -64,6 +64,7 @@ app.controller('RecipeApp', ['$scope', '$location', '$http', 'Recipe', function 
 
 	$scope.saveRecipe = function () {
 		// console.log($scope.Recipe);
+		// TODO validate that the stagedIngredients array is empty (all ingredients are moved to into an action) before saving
 		$http.post('/api/recipes', $scope.Recipe)
 			.then(function (returnedData) {
 				console.log(returnedData);

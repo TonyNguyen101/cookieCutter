@@ -36,9 +36,11 @@ var recipeSchema = new mongoose.Schema({
 	}],
 	// allIngredients Array w/ nested ingredients: for faster ingredient search
 	allIngredients: [{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Ingredient"
-		}],
+		ingredientName: String,
+		imperialQuantity: Number,
+		imperialUnits: String,
+		description: String
+	}],
 	// vessels array	
 	vessels: [{
 		vesselName: String,
@@ -69,8 +71,14 @@ var recipeSchema = new mongoose.Schema({
 			}],
 			// ingredients array
 			ingredients: [{
-				type: mongoose.Schema.Types.ObjectId,
-				ref: "Ingredient"
+				ingredientName: String,
+				imperialQuantity: Number,
+				imperialUnits: String,
+				description: String,
+				comments: [{
+					type: mongoose.Schema.Types.ObjectId,
+					ref: "Comment"
+				}]
 			}]
 		}]	
 	}]

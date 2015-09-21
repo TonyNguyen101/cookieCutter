@@ -1,3 +1,7 @@
+// Not referenced anywhere right now
+
+
+
 var mongoose = require('mongoose');
 
 var ingredientSchema = new mongoose.Schema({

@@ -1,6 +1,7 @@
 app.factory('Recipe', function () {
 	var Recipe = {
-		title: "Chewie Chocolate Chip Cookies (test)",
+		// _id: "56004cf09332d88b7dc96870",
+		title: "Chewie Chocolate Chip Cookies new",
 		formVisible: false,		
 		image: "http://s3.amazonaws.com/gmi-digital-library/2ea0aafc-2942-4134-947f-847c043411ae.jpg", 
 		description: "Crisp edges, chewy middles.", 
