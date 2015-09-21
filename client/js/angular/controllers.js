@@ -53,7 +53,6 @@ app.controller('RecipeApp', ['$scope', '$location', '$http', 'Recipe', function 
 	// 	}
 	// 	]
 	// };
-
 	// //Populate the recipes's allIngredients array
 	// for (var i = 0; i < $scope.Recipe.vessels.length; i++) {
 	// 	for (var j = 0; j < $scope.Recipe.vessels[i].actions.length; j++){
@@ -62,6 +61,17 @@ app.controller('RecipeApp', ['$scope', '$location', '$http', 'Recipe', function 
 	// 		}
 	// 	}
 	// }
+
+	$scope.saveRecipe = function () {
+		// console.log($scope.Recipe);
+		$http.post('/api/recipes', $scope.Recipe)
+			.then(function (returnedData) {
+				console.log(returnedData);
+				// console.log(returnedData.statusText);
+			}, function (error) {
+				console.log(error);
+			});
+	};
 
   $scope.toggleForm = function (scope) {
   	var nodeData = scope.$modelValue;
@@ -131,8 +141,6 @@ app.controller('RecipeApp', ['$scope', '$location', '$http', 'Recipe', function 
   };
 
 	$scope.addIngredientToAllIngredients = function (newAllIngredient) {
-		console.log(newAllIngredient);
-		console.log(this.newIngredient);
 		if (newAllIngredient.ingredientName !== '' && newAllIngredient.imperialQuantity !== ''){
   		this.Recipe.allIngredients.push(newAllIngredient);
   		// TODO: make clone of new ingredient instance and add to ingredients on recipe scope

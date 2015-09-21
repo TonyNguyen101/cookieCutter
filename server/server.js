@@ -16,8 +16,8 @@ app.use(morgan('tiny'));
 
 var oldFolderIndex = __dirname.length - 7;
 var rootDir = __dirname.slice(0,oldFolderIndex);
-
 app.use(express.static(rootDir + '/client'));
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
@@ -37,7 +37,7 @@ app.get('/', function (req, res) {
 });
 
 //INDEX
-apiRouter.route('/api/users')
+apiRouter.route('/users')
 .get(function (req, res) {
 	db.User.find({}, function (error, response) {
 		res.json(response);
@@ -50,7 +50,7 @@ apiRouter.route('/api/users')
 	});
 });
 //SHOW
-apiRouter.route('/api/users/:userId')
+apiRouter.route('/users/:userId')
 .get(function (req, res) {
 	db.User.findById(req.params.userId, function (error, user) {
 		if (error) return res.json({message: "Sorry, can't find that user. You will be forever lonely...", error:error});
@@ -81,17 +81,35 @@ apiRouter.route('/api/users/:userId')
 
 
 // Recipe Routes
-apiRouter.route('/api/recipes')
+apiRouter.route('/recipes')
 .get(function (req, res) {
 	db.Recipe.find({}, function (error, response) {
 		res.json(response);
 	});
 })
 .post(function (req, res) {
-	db.Recipe.create(req.body, function (error) {
-		if (error) return	res.json({error: error.message});
-		res.json({message: "Recipe created!"});
-	});
+	// var newRecipe = {};
+	for (var i = 0; i < req.body.vessels.length; i++) {
+		for (var j = 0; j < req.body.vessels[i].actions.length; j++){
+			for (var k = 0; k < req.body.vessels[i].actions[j].ingredients.length; k++){
+				db.Ingredient.create(req.body.vessels[i].actions[j].ingredients[k], function (err, ingredient) {
+					console.log(ingredients[k]);
+					// console.log(j);
+					// console.log(k);
+					// console.log("this is in the ingredients array " + req.body.vessels[i]);
+					// req.body.vessels[i].actions[j].ingredients[k] = ingredient._id;
+					// console.log(ingredient);
+					// ingredient.save();
+				});
+			}
+		}
+	}
+	// console.log(req.body);
+	// db.Recipe.create(req.body, function (error, recipe) {
+	// 	console.log(req.body);
+	// 	if (error) return	res.json(error);
+	// 	res.json({message: "Recipe created!"});
+	// });
 });
 
 

@@ -7,8 +7,7 @@ app.factory('Recipe', function () {
 		// TODO: sum up all action times to make totalTime
 		totalTime: 30,
 		score: 0,
-		updatedDate: 'Mon Jan 02 2012 00:00:00 GMT+0100 (CET)',
-		user: "Tony Nguyen", 
+		// user: "Tony Nguyen", 
 		comments: [],	
 		borrowers: [],
 		allIngredients: [],
@@ -18,13 +17,15 @@ app.factory('Recipe', function () {
 			formVisible: false,
 			description: "any bowl will do",
 			comments: [],
-			actions: [{
+			actions: [
+			{
 				actionName: "mix in",
 				formVisible: false,
 				time: 7,
 				description: "Slowly, one ingredient at a time",
 				comments: [],
-				ingredients: [{
+				ingredients: [
+				{
 					ingredientName: 'chocolate chips',
      			imperialQuantity: 4.5,
 					imperialUnits: "oz",
@@ -36,14 +37,17 @@ app.factory('Recipe', function () {
 					imperialUnits: "stick",
 					description: "organic prefered",
 					comments: []
-				}]
-			}]
+				}
+				]
+			}
+			]
 		},{
 			vesselName: 'large mixing bowl',
 			formVisible: false,
 			description: "can use an auto mixing bowl",
 			comments: [],
-			actions: [{
+			actions: [
+			{
 				actionName: "slowly mix in",
 				formVisible: false,
 				time: 10,
@@ -69,7 +73,8 @@ app.factory('Recipe', function () {
 					description: "be sure to use all purpose flour as compared to bread, cake, or self-rising",
 					comments: []
 				}]
-			}]
+			}
+			]
 		}
 		]
 	};
