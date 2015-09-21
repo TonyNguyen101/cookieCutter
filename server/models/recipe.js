@@ -7,7 +7,7 @@ var recipeSchema = new mongoose.Schema({
 		default: false 
 	},
 	// Change img String to [String] to be able to add more images
-	image: String,
+	images: [String],
 	description: String,
 	// Do I have to change this to a String to account for decmials and factions?
 	totalTime: { 

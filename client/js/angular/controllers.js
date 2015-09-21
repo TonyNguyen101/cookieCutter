@@ -1,66 +1,6 @@
-app.controller('RecipeApp', ['$scope', '$location', '$http', 'Recipe', function ($scope, $location, $http, Recipe) {
+app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', function ($scope, $location, $http, Recipe) {
+  // Recipe service
   $scope.Recipe = Recipe;
- //  $scope.recipe = {
-	// 	title: "Chewie Chocolate Chip Cookies",
-	// 	formVisible: false,
-	// 	author: "Tony Nguyen", 
-	// 	image: "http://s3.amazonaws.com/gmi-digital-library/2ea0aafc-2942-4134-947f-847c043411ae.jpg", 
-	// 	description: "Crisp edges, chewy middles.", 
-	// 	// TODO: sum up all action times to make totalTime
-	// 	totalTime: 30,
-	// 	score: 0,
-	// 	allIngredients: [],		
-	// 	vessels: [
-	// 	{
-	// 		vesselName: 'small mixing bowl',
-	// 		formVisible: false,
-	// 		actions: [{
-	// 			actionName: "mix in",
-	// 			formVisible: false,
-	// 			time: 7,
-	// 			ingredients: [{
-	// 				ingredientName: 'chocolate chips',
- //     			imperialQuantity: 4.5,
-	// 				imperialUnits: "oz",
-	// 				}, {
-	// 				ingredientName: 'butter',
- //     			imperialQuantity: 4.5,
-	// 				imperialUnits: "stick",
-	// 			}]
-	// 		}]
-	// 	},{
-	// 		vesselName: 'large mixing bowl',
-	// 		formVisible: false,
-	// 		actions: [{
-	// 			actionName: "slowly mix in",
-	// 			formVisible: false,
-	// 			time: 10,
-	// 			ingredients: [{
-	// 				ingredientName: 'sugar',	
- //     			imperialQuantity: 1.5,
-	// 				imperialUnits: "cup",
-	// 			}]
-	// 		},{ 
-	// 			actionName: "blend in",
-	// 			formVisible: false,
-	// 			time: 20,
-	// 			ingredients: [{
-	// 				ingredientName: 'flour',				
- //     			imperialQuantity: 2,
-	// 				imperialUnits: "cup",
-	// 			}]
-	// 		}]
-	// 	}
-	// 	]
-	// };
-	// //Populate the recipes's allIngredients array
-	// for (var i = 0; i < $scope.Recipe.vessels.length; i++) {
-	// 	for (var j = 0; j < $scope.Recipe.vessels[i].actions.length; j++){
-	// 		for (var k = 0; k < $scope.Recipe.vessels[i].actions[j].ingredients.length; k++){
-	// 			$scope.Recipe.allIngredients.push($scope.Recipe.vessels[i].actions[j].ingredients[k]);
-	// 		}
-	// 	}
-	// }
 
 	$scope.saveRecipe = function () {
 		// console.log($scope.Recipe);
@@ -158,4 +98,11 @@ app.controller('RecipeApp', ['$scope', '$location', '$http', 'Recipe', function 
   //     }
   // };
 
+}]);
+
+app.controller('IndexController', ['$scope', '$location', '$http', 'Recipe', function ($scope, $location, $http, Recipe) {
+	$http.get("api/recipes").success(function (response) {
+		
+		$scope.allRecipes = response;
+	}); 
 }]);

@@ -1,12 +1,14 @@
-// var app = angular.module('testApp', ['ui.tree', 'ngRoute', 'ngAnimate']);
-
 var app = angular.module("cookieCutter", ['ui.tree', 'ngRoute', 'ngAnimate']);
 
 app.config(function ($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl: 'views/index.html',
-			controller: 'RecipeApp'
+			controller: 'IndexController'
+		})
+		.when('/create', {
+			templateUrl: 'views/create.html',
+			controller: 'CreateController'
 		})
 		// .when('/users/:usersId', {
 		// 	templateUrl: 'partials/user.html',

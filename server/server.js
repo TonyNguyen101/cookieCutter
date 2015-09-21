@@ -84,6 +84,7 @@ apiRouter.route('/users/:userId')
 apiRouter.route('/recipes')
 .get(function (req, res) {
 	db.Recipe.find({}, function (error, response) {
+		// need error handling
 		res.json(response);
 	});
 })

@@ -3,7 +3,7 @@ app.factory('Recipe', function () {
 		// _id: "56004cf09332d88b7dc96870",
 		title: "Chewie Chocolate Chip Cookies new",
 		formVisible: false,		
-		image: "http://s3.amazonaws.com/gmi-digital-library/2ea0aafc-2942-4134-947f-847c043411ae.jpg", 
+		images: ["http://s3.amazonaws.com/gmi-digital-library/2ea0aafc-2942-4134-947f-847c043411ae.jpg"], 
 		description: "Crisp edges, chewy middles.", 
 		// TODO: sum up all action times to make totalTime
 		totalTime: 30,
