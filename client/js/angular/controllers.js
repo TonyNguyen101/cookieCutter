@@ -100,9 +100,23 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 
 }]);
 
-app.controller('IndexController', ['$scope', '$location', '$http', 'Recipe', function ($scope, $location, $http, Recipe) {
-	$http.get("api/recipes").success(function (response) {
-		
-		$scope.allRecipes = response;
-	}); 
+app.controller('IndexController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
+	$http.get("api/recipes")
+		.success(function (response) {
+			$scope.allRecipes = response;
+		});
+
+	$scope.showRecipe = function (oneRecipeId) {
+		$location.path('/recipe/' + oneRecipeId);	
+	};
 }]);
+
+app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams', function ($scope, $location, $http, $routeParams) {
+	var oneRecipeId = $routeParams.recipeId;
+	$http.get("api/recipe/" + oneRecipeId)
+			.success (function (response) {
+				$scope.oneRecipe = response;
+		});
+}]);
+
+

@@ -1,7 +1,7 @@
 <h1>I am the index.html from the client views</h1>
 
 <div class="container-fluid">
-	<div class="col-xs-6 col-sm-4" ng-repeat="recipe in allRecipes">
+	<div class="col-xs-6 col-sm-4" ng-repeat="recipe in allRecipes" ng-click="showRecipe(recipe._id)">
 		{{recipe.title}}
 		<div class="indexPics" ng-repeat="image in recipe.images">
 			<img height="50" src='{{image}}'>
@@ -9,6 +9,6 @@
 	</div>
 </div>
 
-<!-- <div class="col-sm-5">
+<div class="col-sm-5">
 	<pre class="code">{{allRecipes | json}}</pre>	
-</div> -->
+</div>

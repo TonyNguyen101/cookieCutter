@@ -82,12 +82,13 @@ apiRouter.route('/users/:userId')
 
 // Recipe Routes
 apiRouter.route('/recipes')
+//Index
 .get(function (req, res) {
 	db.Recipe.find({}, function (error, response) {
 		// need error handling
 		res.json(response);
 	});
-})
+}) //Create or Update
 .post(function (req, res) {
 	if (req.body._id) {
 		db.Recipe.update(req.body._id, req.body, function (err, recipe) {
@@ -103,28 +104,13 @@ apiRouter.route('/recipes')
 	}
 });
 
-	// var newRecipe = {};
-	// for (var i = 0; i < req.body.vessels.length; i++) {
-	// 	for (var j = 0; j < req.body.vessels[i].actions.length; j++){
-	// 		for (var k = 0; k < req.body.vessels[i].actions[j].ingredients.length; k++){
-				// db.Ingredient.create(req.body.vessels[i].actions[j].ingredients[k], function (err, ingredient) {
-					// console.log(ingredients[k]);
-					// console.log(j);
-					// console.log(k);
-					// console.log("this is in the ingredients array " + req.body.vessels[i]);
-					// req.body.vessels[i].actions[j].ingredients[k] = ingredient._id;
-					// console.log(ingredient);
-					// ingredient.save();
-				// });
-			// }
-		// }
-	// }
-	// console.log(req.body);
-	// db.Recipe.create(req.body, function (error, recipe) {
-	// 	console.log(req.body);
-	// 	if (error) return	res.json(error);
-	// 	res.json({message: "Recipe created!"});
-	// });
+//Show
+apiRouter.route('/recipe/:recipeId')
+.get(function (req, res) {
+	db.Recipe.findById(req.params.recipeId, function (error, response) {
+		res.json(response);
+	});
+});
 
 
 

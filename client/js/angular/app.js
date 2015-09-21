@@ -10,10 +10,10 @@ app.config(function ($routeProvider, $locationProvider) {
 			templateUrl: 'views/create.html',
 			controller: 'CreateController'
 		})
-		// .when('/users/:usersId', {
-		// 	templateUrl: 'partials/user.html',
-		// 	controller: 'ShowController'
-		// })
+		.when('/recipe/:recipeId', {
+			templateUrl: 'views/show.html',
+			controller: 'ShowController'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
