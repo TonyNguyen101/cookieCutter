@@ -11,6 +11,8 @@
       <!-- Temp image uploader  -->
       <input type="url" ng-model="Recipe.images[0]" class="form-control" placeholder="image url">
 
+      <input type="text" ng-model="Recipe.totalTime" class="form-control" placeholder="total time">
+
       <!-- <input type="submit" class="btn btn-primary" ng-disabled="recipeForm.$invalid" value="add"> -->
       </form>
       <a href="" ng-click="toggleRecipeForm()" ng-if='!recipeFormVisible'>New recipe form!</a>
@@ -140,7 +142,8 @@
 
       </div>
 
-      <button ng-click='saveRecipe()'>click to save </button>
+      <button ng-click='saveRecipe()'>click to publish </button>
+      <button ng-click='startNewRecipe()'>Start new recipe</button>
     <div class="col-sm-5">
       <pre class="code">{{Recipe | json}}</pre>
     </div>  

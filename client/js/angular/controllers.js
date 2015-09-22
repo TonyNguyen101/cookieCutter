@@ -7,10 +7,12 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 	$scope.saveRecipe = function () {
 		if ($scope.tempIngredientBin.length > 0) {
 			alert("Looks like you still need to place an ingredient from your bin");
+		} else if (!$scope.Recipe.title){
+			alert("Can't publish a blank recipe");
 		} else {
 			$http.post('/api/recipes', $scope.Recipe)
 				.then(function (returnedObject) {
-					console.log(returnedObject);
+					console.log(returnedObject.data.message);
 					if (returnedObject.data._id){
 						$scope.Recipe._id = returnedObject.data._id;
 					}
@@ -18,6 +20,19 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 					console.log(error);
 				});
 		}	
+	};
+
+	$scope.startNewRecipe = function () {
+		$scope.Recipe = undefined;
+		$scope.Recipe = {	
+			formVisible: false,		
+			images: [], 
+			score: 0,
+			comments: [],	
+			borrowers: [],
+			allIngredients: [],
+			vessels: []
+		};
 	};
 
   $scope.toggleForm = function () {
