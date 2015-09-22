@@ -1,6 +1,7 @@
 app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', function ($scope, $location, $http, Recipe) {
   // Recipe service
   $scope.Recipe = Recipe;
+  $scope.recipeFormVisible = true;
 
 	$scope.saveRecipe = function () {
 		// console.log($scope.Recipe);
@@ -8,14 +9,14 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 		$http.post('/api/recipes', $scope.Recipe)
 			.then(function (returnedData) {
 				console.log(returnedData);
-				// console.log(returnedData.statusText);
 			}, function (error) {
 				console.log(error);
 			});
 	};
 
-  $scope.toggleForm = function (scope) {
-  	var nodeData = scope.$modelValue;
+  $scope.toggleForm = function () {
+  	// Will say this is null. still works
+  	var nodeData = this.$modelValue;
   	if (nodeData) {
   		nodeData.formVisible = !nodeData.formVisible;
   	}
@@ -24,6 +25,10 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
   $scope.toggleVesselForm = function () {
   	$scope.formVisible = !$scope.formVisible;
   };
+
+  $scope.toggleRecipeForm = function () {
+  	$scope.recipeFormVisible = !$scope.recipeFormVisible;
+  };  
 
 	$scope.movementOptions = {
 		accept: function (sourceNodeScope, destNodeScope, destIndex) {
@@ -54,10 +59,13 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
   //   });
   // };
 
+
+
   $scope.addVessel = function () {
-  	if (this.newVessel.vesselName !== '' && this.newVessel.time !== '') {
+  	if (this.newVessel.vesselName !== '') {
   		this.newVessel.formVisible = false;
   		this.newVessel.actions = [];
+  		this.newVessel.comments = [];
 			this.Recipe.vessels.push(this.newVessel);
   		this.newVessel = '';  		
   	}
@@ -66,6 +74,7 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
    	if (this.newAction.actionName !== ''){
    		this.formVisible = false;
    		this.newAction.ingredients = [];
+   		this.newAction.comments = [];
 			this.vessel.actions.push(this.newAction);
   		this.newAction = '';  		
   	}
@@ -74,7 +83,7 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
   //Add ingredient in actions
   $scope.addIngredientToAction = function () {
   	if (this.newIngredient.ingredientName !== '' && this.newIngredient.imperialQuantity !== ''){
-  		// TODO: make clone of new ingredient instance and add to ingredients on recipe scope
+			this.newIngredient.comments = [];
 			this.action.ingredients.push(this.newIngredient);
 			$scope.Recipe.allIngredients.push(this.newIngredient);
   		this.newIngredient = '';  		
@@ -83,9 +92,10 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 
 	$scope.addIngredientToAllIngredients = function (newAllIngredient) {
 		if (newAllIngredient.ingredientName !== '' && newAllIngredient.imperialQuantity !== ''){
+			newAllIngredient.comments = [];
   		this.Recipe.allIngredients.push(newAllIngredient);
   		// TODO: make clone of new ingredient instance and add to ingredients on recipe scope
-  		this.newIngredient = '';
+  		this.newAllIngredient = '';
   	}	
 	};
 
