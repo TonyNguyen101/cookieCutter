@@ -1,5 +1,110 @@
 <h1>Hi! This is the recipe show page</h1>
 
 <div class="col-sm-5">
-	<pre class="code">{{oneRecipe | json}}</pre>	
+  <div ng-model="oneRecipe">    
+    <h3>{{oneRecipe.title}}</h3>
+    <h4>{{oneRecipe.totalTime}} mins</h4>
+    <h4>{{oneRecipe._id}}</h4>
+    <br>
+    <img height="150" src='{{oneRecipe.images[0]}}'>
+    <h3>List of all ingredients</h3>
+    <ul ng-repeat='ingredient in oneRecipe.allIngredients'>
+      <li>            
+        {{ingredient.imperialQuantity}}
+        {{ingredient.imperialUnits}}                        
+        {{ingredient.ingredientName}}         
+      </li>     
+    </ul>
+    <!-- movementOptions are not in this $scope -->
+    <div ui-tree data-drag-enabled="false" class="col-xs-7" >
+      <ol ui-tree-nodes ng-model="oneRecipe.vessels" data-type='recipe'>
+        <li ui-tree-node ui-tree-handle ng-repeat='vessel in oneRecipe.vessels' data-type='vessel'>   
+          <div class="row vesselBox">
+            {{vessel.vesselName}}
+            <div ui-tree data-drag-enabled="false">
+              <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
+                  <li ui-tree-node ui-tree-handle ng-repeat='action in vessel.actions' data-type='action'>
+                    <div class="row">
+                      <div class="timeBox col-xs-1 col-sm-1">{{action.time}}</div>
+                      <div class="actionBox col-sm-11">
+                        {{action.actionName}}
+
+                        <div ui-tree data-drag-enabled="false">
+                          <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>
+                            <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='ingredient'>
+                                {{ingredient.imperialQuantity}}
+                                {{ingredient.imperialUnits}}                        
+                                {{ingredient.ingredientName}}
+                            </li>
+                          </ol>
+                        </div>
+                       </div> 
+                    </div>
+                  </li>
+              </ol>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>  
+  </div>  
+</div>
+
+<div class="col-sm-5" ng-if="recipeRecipesSwitch">
+	<div class="col-xs-6 col-sm-4" ng-repeat="recipe in allRecipes" ng-click="showOneRecipe(recipe._id)">
+		{{recipe.title}}
+		<div class="indexPics" ng-repeat="image in recipe.images">
+			<img height="50" src='{{image}}'>
+		</div>
+	</div>
+</div>
+
+<div class="col-sm-5" ng-if="!recipeRecipesSwitch">
+  <div ng-model="anotherRecipe">    
+    <h3>{{anotherRecipe.title}}</h3>
+    <h4>{{anotherRecipe.totalTime}} mins</h4>
+    <h4>{{anotherRecipe._id}}</h4>
+    <br>
+    <img height="150" src='{{anotherRecipe.images[0]}}'>
+    <h3>List of all ingredients</h3>
+    <ul ng-repeat='ingredient in anotherRecipe.allIngredients'>
+      <li>            
+        {{ingredient.imperialQuantity}}
+        {{ingredient.imperialUnits}}                        
+        {{ingredient.ingredientName}}         
+      </li>     
+    </ul>
+    <!-- movementOptions are not in this $scope -->
+    <div ui-tree data-drag-enabled="false" class="col-xs-7" >
+      <ol ui-tree-nodes ng-model="anotherRecipe.vessels" data-type='recipe'>
+        <li ui-tree-node ui-tree-handle ng-repeat='vessel in anotherRecipe.vessels' data-type='vessel'>   
+          <div class="row vesselBox">
+            {{vessel.vesselName}}
+            <div ui-tree data-drag-enabled="false">
+              <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
+                  <li ui-tree-node ui-tree-handle ng-repeat='action in vessel.actions' data-type='action'>
+                    <div class="row">
+                      <div class="timeBox col-xs-1 col-sm-1">{{action.time}}</div>
+                      <div class="actionBox col-sm-11">
+                        {{action.actionName}}
+                        <div ui-tree data-drag-enabled="false">
+                          <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>
+                            <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='ingredient'>
+                                {{ingredient.imperialQuantity}}
+                                {{ingredient.imperialUnits}}                        
+                                {{ingredient.ingredientName}}
+                            </li>
+                          </ol>
+                        </div>
+                       </div> 
+                    </div>
+                  </li>
+              </ol>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>  
+  </div>
+  <button ng-click="backToAllRecipes()">back</button>  
 </div>

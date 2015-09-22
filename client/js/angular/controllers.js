@@ -29,7 +29,7 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 		accept: function (sourceNodeScope, destNodeScope, destIndex) {
 			var srcType = sourceNodeScope.$element.attr('data-type');
 			var dstType = destNodeScope.$element.attr('data-type');
-			console.log("From: " + srcType + " To: " + dstType);
+			// console.log("From: " + srcType + " To: " + dstType);
 			if ((srcType === "action" && dstType === "vessel") || 
 				(srcType === "ingredient" && dstType === "action") || 
 				(srcType === "vessel" && dstType === "recipe") ){
@@ -100,10 +100,14 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 
 }]);
 
-app.controller('IndexController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
+app.controller('IndexController', ['$scope', '$location', '$http', 'SimilarRecipes', function ($scope, $location, $http, SimilarRecipes) {
+	$scope.SimilarRecipes = SimilarRecipes;
 	$http.get("api/recipes")
 		.success(function (response) {
 			$scope.allRecipes = response;
+			// $scope.SimilarRecipes = response;
+			// SimilarRecipes = response;
+			// console.log(SimilarRecipes);
 		});
 
 	$scope.showRecipe = function (oneRecipeId) {
@@ -111,12 +115,33 @@ app.controller('IndexController', ['$scope', '$location', '$http', function ($sc
 	};
 }]);
 
-app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams', function ($scope, $location, $http, $routeParams) {
+app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams', 'SimilarRecipes', function ($scope, $location, $http, $routeParams, SimilarRecipes) {
 	var oneRecipeId = $routeParams.recipeId;
 	$http.get("api/recipe/" + oneRecipeId)
-			.success (function (response) {
-				$scope.oneRecipe = response;
+		.success (function (response) {
+			$scope.oneRecipe = response;
+			// TODO: replace all with search
+			$http.get('api/recipes')
+				.success (function (allRecipes) {
+					$scope.allRecipes = allRecipes;
+				});
 		});
+
+	$scope.recipeRecipesSwitch = true;	
+
+	$scope.showOneRecipe = function (anotherRecipeId) {
+		$scope.allRecipes.forEach(function (recipe) {
+			if (recipe._id === anotherRecipeId) {
+				$scope.anotherRecipe = recipe;
+				$scope.recipeRecipesSwitch = !$scope.recipeRecipesSwitch;
+			}
+		});	
+	};
+
+	$scope.backToAllRecipes = function () {
+		$scope.recipeRecipesSwitch = !$scope.recipeRecipesSwitch;
+	};
+
 }]);
 
 

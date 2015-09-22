@@ -92,3 +92,8 @@ app.factory('Recipe', function () {
 
 	return Recipe;
 });
+
+app.factory('SimilarRecipes', function () {
+	var SimilarRecipes = {};
+	return SimilarRecipes;
+});	
