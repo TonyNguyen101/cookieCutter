@@ -23,7 +23,7 @@
     <div ng-model="Recipe">    
       <h3>{{Recipe.title}}</h3>
       <h4>{{Recipe.totalTime}} mins</h4>
-      <h4>{{Recipe._id}}</h4>
+      <h4>{{Recipe.description}}</h4>
       <br>
       <img height="150" src='{{Recipe.images[0]}}'>
       <h3>List of all ingredients</h3>
@@ -38,32 +38,31 @@
 
 
 
-
+      <!-- make temp moveable ingredient bin -->
       
       <div class="hideForm">
-        <form name="ingredientForm" ng-submit="addIngredientToAllIngredients(newIngredient)" class="form-group" novalidate>
+        <form name="allIngredientsForm" ng-submit="addIngredientToAllIngredients(newAllIngredient)" class="form-group" novalidate>
         <!-- New All Ingredients Form -->
-        <input type="text" ng-model="newIngredient.imperialQuantity" class="form-control" placeholder="ammount">
-        <input type="text" ng-model="newIngredient.imperialUnits" class="form-control" placeholder="unit">        
-        <input type="text" ng-model="newIngredient.ingredientName" class="form-control" placeholder="name">
-        <input type="text" ng-model="newIngredient.description" class="form-control" placeholder="description (optional)">
+        <input type="text" ng-model="newAllIngredient.imperialQuantity" class="form-control" placeholder="ammount">
+        <input type="text" ng-model="newAllIngredient.imperialUnits" class="form-control" placeholder="unit">        
+        <input type="text" ng-model="newAllIngredient.ingredientName" class="form-control" placeholder="name">
+        <input type="text" ng-model="newAllIngredient.description" class="form-control" placeholder="description (optional)">
         <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
         </form>
       </div> 
 
       <!-- <h3>Click&Drag to add to actions </h3>  -->
       
-      <!-- <div ui-tree="movementOptions" data-clone-enabled="true" data-nodrop-enabled="true"> -->
-      <!-- <div ui-tree="movementOptions" data-nodrop-enabled="true"> -->
+      <div ui-tree="movementOptions" data-nodrop-enabled="true">
 
-<!--         <ul ui-tree-nodes ng-model="recipe.allIngredients" data-type="action">
-          <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat="ingredient in recipe.allIngredients" data-type="ingredient">
+        <ul ui-tree-nodes ng-model="tempIngredientBin" data-type="action">
+          <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat="ingredient in tempIngredientBin" data-type="ingredient">
             {{ingredient.imperialQuantity}}
             {{ingredient.imperialUnits}}                        
             {{ingredient.ingredientName}}            
           </li>
         </ul>
-      </div> -->
+      </div>
 
 
       <div ui-tree="movementOptions" class="col-xs-7">

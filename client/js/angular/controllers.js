@@ -2,16 +2,24 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
   // Recipe service
   $scope.Recipe = Recipe;
   $scope.recipeFormVisible = true;
+  $scope.tempIngredientBin = [];
 
 	$scope.saveRecipe = function () {
+		
 		// console.log($scope.Recipe);
 		// TODO validate that the stagedIngredients array is empty (all ingredients are moved to into an action) before saving
-		$http.post('/api/recipes', $scope.Recipe)
-			.then(function (returnedData) {
-				console.log(returnedData);
-			}, function (error) {
-				console.log(error);
-			});
+		
+
+		if ($scope.tempIngredientBin.length > 0) {
+			alert("Looks like you still need to place an ingredient from your bin");
+		} else {
+			$http.post('/api/recipes', $scope.Recipe)
+				.then(function (returnedData) {
+					console.log(returnedData);
+				}, function (error) {
+					console.log(error);
+				});
+		}	
 	};
 
   $scope.toggleForm = function () {
@@ -93,7 +101,8 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 	$scope.addIngredientToAllIngredients = function (newAllIngredient) {
 		if (newAllIngredient.ingredientName !== '' && newAllIngredient.imperialQuantity !== ''){
 			newAllIngredient.comments = [];
-  		this.Recipe.allIngredients.push(newAllIngredient);
+  		Recipe.allIngredients.push(newAllIngredient);
+  		$scope.tempIngredientBin.push(newAllIngredient);
   		// TODO: make clone of new ingredient instance and add to ingredients on recipe scope
   		this.newAllIngredient = '';
   	}	
