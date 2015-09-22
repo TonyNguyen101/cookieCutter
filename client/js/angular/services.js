@@ -3,6 +3,7 @@ app.factory('Recipe', function () {
 		// title: "Chewie Chocolate Chip Cookies new",
 		title: "",
 		formVisible: false,		
+		// _id: null,
 		// images: ["http://s3.amazonaws.com/gmi-digital-library/2ea0aafc-2942-4134-947f-847c043411ae.jpg"], 
 		images: [], 
 		// description: "Crisp edges, chewy middles.", 
@@ -84,13 +85,13 @@ app.factory('Recipe', function () {
 
 
 	//Populate the recipes's allIngredients array
-	for (var i = 0; i < Recipe.vessels.length; i++) {
-		for (var j = 0; j < Recipe.vessels[i].actions.length; j++){
-			for (var k = 0; k < Recipe.vessels[i].actions[j].ingredients.length; k++){
-				Recipe.allIngredients.push(Recipe.vessels[i].actions[j].ingredients[k]);
-			}
-		}
-	}
+	// for (var i = 0; i < Recipe.vessels.length; i++) {
+	// 	for (var j = 0; j < Recipe.vessels[i].actions.length; j++){
+	// 		for (var k = 0; k < Recipe.vessels[i].actions[j].ingredients.length; k++){
+	// 			Recipe.allIngredients.push(Recipe.vessels[i].actions[j].ingredients[k]);
+	// 		}
+	// 	}
+	// }
 
 	return Recipe;
 });

@@ -99,7 +99,7 @@ apiRouter.route('/recipes')
 		// create new recipe
 		db.Recipe.create(req.body, function (err, recipe) {
 			console.log("This is the saved recipe!: " + recipe);
-			res.json({message: "recipe created!"});			
+			res.json({message: "recipe created!", _id: recipe._id});			
 		});
 	}
 });

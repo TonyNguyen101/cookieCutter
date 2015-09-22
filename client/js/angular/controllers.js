@@ -5,17 +5,15 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
   $scope.tempIngredientBin = [];
 
 	$scope.saveRecipe = function () {
-		
-		// console.log($scope.Recipe);
-		// TODO validate that the stagedIngredients array is empty (all ingredients are moved to into an action) before saving
-		
-
 		if ($scope.tempIngredientBin.length > 0) {
 			alert("Looks like you still need to place an ingredient from your bin");
 		} else {
 			$http.post('/api/recipes', $scope.Recipe)
-				.then(function (returnedData) {
-					console.log(returnedData);
+				.then(function (returnedObject) {
+					console.log(returnedObject);
+					if (returnedObject.data._id){
+						$scope.Recipe._id = returnedObject.data._id;
+					}
 				}, function (error) {
 					console.log(error);
 				});
