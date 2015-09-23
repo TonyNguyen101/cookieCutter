@@ -49,7 +49,6 @@
       <!-- <h3>Click&Drag to add to actions </h3>  -->
       
       <div ui-tree="movementOptions" data-nodrop-enabled="true">
-
         <ul ui-tree-nodes ng-model="tempIngredientBin" data-type="action">
           <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat="ingredient in tempIngredientBin" data-type="ingredient">
             {{ingredient.imperialQuantity}}
@@ -63,8 +62,8 @@
       <div ui-tree="movementOptions" class="col-xs-7">
         <ol ui-tree-nodes ng-model="Recipe.vessels" data-type='recipe'>
           <li ui-tree-node ui-tree-handle ng-repeat='vessel in Recipe.vessels' data-type='vessel'>  
-             
-            <div class="row vesselBox">
+            <!-- Vessel div -->
+            <div class="row vesselBox" ng-if="!vessel.transition">
               {{vessel.vesselName}}
               <input type="text" ng-model="vessel.vesselName">
               <!-- <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a> -->
@@ -124,6 +123,8 @@
                 <a href="" ng-click="toggleForm(this)">New action form!</a>
               </div>
             </div>
+            <!-- Transition div -->
+            <div class="row actionBox" ng-if="vessel.transition">{{vessel.vesselName}}</div>
           </li>
         </ol>
 

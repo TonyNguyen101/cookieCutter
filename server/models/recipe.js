@@ -43,7 +43,7 @@ var recipeSchema = new mongoose.Schema({
 		imperialUnits: String,
 		description: String
 	}],
-	// vessels array	
+	// Vessels array	
 	vessels: [{
 		vesselName: String,
 		formVisible: {
@@ -51,6 +51,10 @@ var recipeSchema = new mongoose.Schema({
 			default: false 
 		},
 		description: String,
+		transition: {
+			type: Boolean,
+			default: false 
+		},
 		comments: [{
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Comment"

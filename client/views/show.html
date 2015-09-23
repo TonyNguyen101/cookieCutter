@@ -15,11 +15,12 @@
         {{ingredient.ingredientName}}         
       </li>     
     </ul>
-    <!-- movementOptions are not in this $scope -->
+    <!-- movementOptions are not in the SHOW page -->
     <div ui-tree data-drag-enabled="false" class="col-xs-7" >
       <ol ui-tree-nodes ng-model="oneRecipe.vessels" data-type='recipe'>
         <li ui-tree-node ui-tree-handle ng-repeat='vessel in oneRecipe.vessels' data-type='vessel'>   
-          <div class="row vesselBox">
+          <!-- Vessel div -->
+          <div class="row vesselBox" ng-if="!vessel.transition">
             {{vessel.vesselName}}
             <div ui-tree data-drag-enabled="false">
               <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
@@ -44,6 +45,8 @@
               </ol>
             </div>
           </div>
+					<!-- Transition div -->
+          <div class="row actionBox" ng-if="vessel.transition">{{vessel.vesselName}}</div>
         </li>
       </ol>
     </div>  
@@ -77,8 +80,9 @@
     <!-- movementOptions are not in this $scope -->
     <div ui-tree data-drag-enabled="false" class="col-xs-7" >
       <ol ui-tree-nodes ng-model="anotherRecipe.vessels" data-type='recipe'>
-        <li ui-tree-node ui-tree-handle ng-repeat='vessel in anotherRecipe.vessels' data-type='vessel'>   
-          <div class="row vesselBox">
+        <li ui-tree-node ui-tree-handle ng-repeat='vessel in anotherRecipe.vessels' data-type='vessel'>
+        	<!-- Vessel div -->
+          <div class="row vesselBox" ng-if="!vessel.transition">
             {{vessel.vesselName}}
             <div ui-tree data-drag-enabled="false">
               <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
@@ -102,6 +106,8 @@
               </ol>
             </div>
           </div>
+          <!-- Transition div -->
+          <div class="row actionBox" ng-if="vessel.transition">{{vessel.vesselName}}</div>
         </li>
       </ol>
     </div>  

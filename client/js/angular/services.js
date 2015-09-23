@@ -64,6 +64,10 @@ app.factory('Recipe', function () {
 			}
 			]
 		},{
+			vesselName: "transfer one by one",
+			description: "further details",
+			transition: true
+		},{
 			vesselName: 'large mixing bowl',
 			formVisible: false,
 			description: "can use an auto mixing bowl",
