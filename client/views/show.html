@@ -1,7 +1,10 @@
 <h1>Hi! This is the recipe show page</h1>
 
 <div class="col-sm-5">
-  <div ng-model="oneRecipe">    
+  <div ng-model="oneRecipe">
+
+		<button ng-click="goToEditPage()">edit</button>
+
     <h3>{{oneRecipe.title}}</h3>
     <h4>{{oneRecipe.totalTime}} mins</h4>
     <h4>{{oneRecipe._id}}</h4>

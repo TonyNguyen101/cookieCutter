@@ -24,7 +24,7 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 	};
 
 	$scope.startNewRecipe = function () {
-		$scope.Recipe = undefined;
+		// $scope.Recipe = undefined;
 		$scope.Recipe = {	
 			formVisible: false,		
 			images: [], 
@@ -119,30 +119,16 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 			newAllIngredient.comments = [];
   		Recipe.allIngredients.push(newAllIngredient);
   		$scope.tempIngredientBin.push(newAllIngredient);
-  		// TODO: make clone of new ingredient instance and add to ingredients on recipe scope
   		this.newAllIngredient = '';
   	}	
 	};
 
-  // $scope.vesselConfig = {
-  //     group: { name: 'vesselGroup', pull: true, put: true },
-  //     animation: 50,
-  //     ghostClass: "sortable-ghost", 
-  //     onSort: function (evt){
-  //     	console.log("something sorted!" + evt);
-  //     }
-  // };
-
 }]);
 
-app.controller('IndexController', ['$scope', '$location', '$http', 'SimilarRecipes', function ($scope, $location, $http, SimilarRecipes) {
-	$scope.SimilarRecipes = SimilarRecipes;
+app.controller('IndexController', ['$scope', '$location', '$http', function ($scope, $location, $http) {
 	$http.get("api/recipes")
 		.success(function (response) {
 			$scope.allRecipes = response;
-			// $scope.SimilarRecipes = response;
-			// SimilarRecipes = response;
-			// console.log(SimilarRecipes);
 		});
 
 	$scope.showRecipe = function (oneRecipeId) {
@@ -150,11 +136,12 @@ app.controller('IndexController', ['$scope', '$location', '$http', 'SimilarRecip
 	};
 }]);
 
-app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams', 'SimilarRecipes', function ($scope, $location, $http, $routeParams, SimilarRecipes) {
+app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams', 'Recipe', function ($scope, $location, $http, $routeParams, Recipe) {
+	$scope.Recipe = Recipe;
 	var oneRecipeId = $routeParams.recipeId;
 	$http.get("api/recipe/" + oneRecipeId)
 		.success (function (response) {
-			$scope.oneRecipe = response;
+			$scope.oneRecipe = response;	
 			// TODO: replace all with search
 			$http.get('api/recipes')
 				.success (function (allRecipes) {
@@ -162,8 +149,15 @@ app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams'
 				});
 		});
 
-	$scope.recipeRecipesSwitch = true;	
+	$scope.goToEditPage = function () {
+		$scope.Recipe.updateRecipe($scope.oneRecipe);
+		// $scope.Recipe = $scope.onerecipe;
+		// console.log($scope.oneRecipe);
+		// console.log($scope.Recipe);
+		$location.path('/create');
+	};
 
+	$scope.recipeRecipesSwitch = true;	
 	$scope.showOneRecipe = function (anotherRecipeId) {
 		$scope.allRecipes.forEach(function (recipe) {
 			if (recipe._id === anotherRecipeId) {

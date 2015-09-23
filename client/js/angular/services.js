@@ -105,6 +105,12 @@ app.factory('Recipe', function () {
 		]
 	};
 
+	Recipe.updateRecipe = function (replacementRecipe) {
+		console.log("This updateRecipe method working?" + replacementRecipe);
+		Recipe = replacementRecipe;
+		console.log(Recipe);
+	};
+
 
 	//Populate the recipes's allIngredients array
 	// for (var i = 0; i < Recipe.vessels.length; i++) {
@@ -118,7 +124,3 @@ app.factory('Recipe', function () {
 	return Recipe;
 });
 
-app.factory('SimilarRecipes', function () {
-	var SimilarRecipes = {};
-	return SimilarRecipes;
-});	
