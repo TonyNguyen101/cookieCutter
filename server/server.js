@@ -91,10 +91,31 @@ apiRouter.route('/recipes')
 }) //Create or Update
 .post(function (req, res) {
 	if (req.body._id) {
-		db.Recipe.update(req.body._id, req.body, function (err, recipe) {
+		var findThisId = req.body._id;
+		delete req.body._id;
+		db.Recipe.update({_id: findThisId}, req.body, function (err, recipe) {
 		// TODO add user auth
-			res.json({message: "recipe updated!"});
+			console.log("after assignment" + recipe);
+			if (err) {
+				res.status(404);
+				res.send(err);
+			} else {
+				res.json({message: "recipe updated!"});
+			}
+				
+		// });
 		});
+		
+		// db.Recipe.findById(req.body._id, function (err, recipeToUpdate) {
+		// 	if (err) res.send(err);
+		// 	console.log("before assignment" + recipeToUpdate.title);			
+		// 	recipeToUpdate = req.body;
+		// 	console.log("after assignment" + recipeToUpdate.title);
+		// 	// recipeToUpdate.save();
+		// 	res.json({message: "recipe updated!"});
+		// });
+
+
 	} else {
 		// create new recipe
 		db.Recipe.create(req.body, function (err, recipe) {
