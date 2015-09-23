@@ -10,10 +10,12 @@ var recipeSchema = new mongoose.Schema({
 	images: [String],
 	description: String,
 	// Do I have to change this to a String to account for decmials and factions?
+	
 	totalTime: { 
-		type: Number,
-		default: 0
+		type: String,
+		default: '0'
 	},
+	servings: Number, 
 	score: { 
 		type: Number,
 		default: 0

@@ -38,7 +38,7 @@
 
 .actionBox {
     background-color: #EC8469;
-    border-radius: 7px;
+    /*border-radius: 7px;*/
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     min-height: 80px;
@@ -52,7 +52,7 @@
 
 .ingredientBox {
     background-color: #E6AE33;
-    border-radius: 7px;
+    /*border-radius: 7px;*/
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }

@@ -12,15 +12,12 @@
       <input type="url" ng-model="Recipe.images[0]" class="form-control" placeholder="image url">
 
       <input type="text" ng-model="Recipe.totalTime" class="form-control" placeholder="total time">
-
+      <input type="number" ng-model="Recipe.servings" class="form-control" placeholder="number of servings">
       <!-- <input type="submit" class="btn btn-primary" ng-disabled="recipeForm.$invalid" value="add"> -->
       </form>
       <a href="" ng-click="toggleRecipeForm()" ng-if='!recipeFormVisible'>New recipe form!</a>
       <a href="" ng-click="toggleRecipeForm()" ng-if='recipeFormVisible'>Done!</a>
     </div> 
-
-
-
 
     <div ng-model="Recipe">    
       <h3>{{Recipe.title}}</h3>
