@@ -22,7 +22,8 @@
 }
 
 .vesselBox {
-    background-color: #377F83;
+    /*background-color: #377F83;*/
+    background-color: #E6AE33;
     /*border-radius: 7px;*/
     min-height: 100px;
     /*need this bc default is 15 r/l*/
@@ -37,7 +38,10 @@
 }
 
 .actionBox {
-    background-color: #EC8469;
+    /*background-color: #EC8469;*/
+    /*background-color: #377F83;*/
+    background-color: #8BB94D;
+
     /*border-radius: 7px;*/
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -51,7 +55,10 @@
 }
 
 .ingredientBox {
-    background-color: #E6AE33;
+    /*background-color: #EC8469;*/
+    background-color: #7DBCD0;
+    /*background-color: #377F83;*/
+    /*background-color: #E6AE33;*/
     /*border-radius: 7px;*/
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
