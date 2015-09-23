@@ -2,6 +2,7 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
   // Recipe service
   $scope.Recipe = Recipe;
   $scope.recipeFormVisible = true;
+  $scope.transitionFormVisible = false;
   $scope.tempIngredientBin = [];
 
 	$scope.saveRecipe = function () {
@@ -46,9 +47,11 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
   $scope.toggleVesselForm = function () {
   	$scope.formVisible = !$scope.formVisible;
   };
-
   $scope.toggleRecipeForm = function () {
   	$scope.recipeFormVisible = !$scope.recipeFormVisible;
+  };
+  $scope.toggleTransitionForm = function () {
+  	$scope.transitionFormVisible = !$scope.transitionFormVisible;
   };  
 
 	$scope.movementOptions = {

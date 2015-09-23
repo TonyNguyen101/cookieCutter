@@ -139,14 +139,14 @@
         <a href="" ng-click="toggleVesselForm()">Add a vessel</a>
         
         <!-- Add Transition Form -->
-        <div class="hideForm" ng-if="formVisible">
+        <div class="hideForm" ng-if="transitionFormVisible">
           <form name="vesselForm" ng-submit="addVessel(vesselForm.$valid)" class="form-group" novalidate>
             <input type="text" ng-model="newVessel.vesselName" class="form-control" placeholder="transition">
             <ng-model='newVessel.transition' ng-init="newVessel.transition = 'true'">                    
             <input type="submit" class="btn btn-primary" ng-disabled="vesselForm.$invalid" value="add">
           </form>
         </div>
-        <a href="" ng-click="toggleVesselForm()">Add a transition</a>
+        <a href="" ng-click="toggleTransitionForm()">Add a transition</a>
         
 
       </div>
