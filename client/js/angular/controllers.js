@@ -1,6 +1,6 @@
 app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', function ($scope, $location, $http, Recipe) {
   // Recipe service
-  $scope.Recipe = Recipe.recipe[0];
+  $scope.Recipe = Recipe.recipe;
   $scope.recipeFormVisible = true;
   $scope.transitionFormVisible = false;
   $scope.tempIngredientBin = [];
@@ -96,7 +96,7 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
   };
   $scope.addAction = function () {
    	if (this.newAction.actionName !== ''){
-   		this.formVisible = false;
+   		this.newAction.formVisible = false;
    		this.newAction.ingredients = [];
    		this.newAction.comments = [];
 			this.vessel.actions.push(this.newAction);
@@ -137,7 +137,6 @@ app.controller('IndexController', ['$scope', '$location', '$http', function ($sc
 }]);
 
 app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams', 'Recipe', function ($scope, $location, $http, $routeParams, Recipe) {
-	// $scope.Recipe = Recipe;
 	var oneRecipeId = $routeParams.recipeId;
 	$http.get("api/recipe/" + oneRecipeId)
 		.success (function (response) {
@@ -151,9 +150,6 @@ app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams'
 
 	$scope.goToEditPage = function () {
 		Recipe.updateRecipe($scope.oneRecipe);
-		// $scope.Recipe = $scope.onerecipe;
-		// console.log($scope.oneRecipe);
-		// console.log($scope.Recipe);
 		$location.path('/create');
 	};
 

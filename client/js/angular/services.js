@@ -1,6 +1,6 @@
 app.factory('Recipe', function () {
 	var Recipe = { 
-		recipe:	[{
+		recipe:	{
 			formVisible: false,		
 			images: [], 
 			score: 0,
@@ -104,10 +104,10 @@ app.factory('Recipe', function () {
 				]
 			}
 			]
-		}],
+		},
 		updateRecipe: function (replacementRecipe) {
 			console.log("This updateRecipe method working?" + replacementRecipe);
-			Recipe.recipe[0] = replacementRecipe;
+			Recipe.recipe = replacementRecipe;
 		}
 	};	
 	return Recipe;
