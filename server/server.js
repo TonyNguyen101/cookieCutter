@@ -88,8 +88,9 @@ apiRouter.route('/recipes')
 		// need error handling
 		res.json(response);
 	});
-}) //Create or Update
+})
 .post(function (req, res) {
+	// Update a recipe
 	if (req.body._id) {
 		var findThisId = req.body._id;
 		delete req.body._id;
@@ -102,22 +103,9 @@ apiRouter.route('/recipes')
 			} else {
 				res.json({message: "recipe updated!"});
 			}
-				
-		// });
 		});
-		
-		// db.Recipe.findById(req.body._id, function (err, recipeToUpdate) {
-		// 	if (err) res.send(err);
-		// 	console.log("before assignment" + recipeToUpdate.title);			
-		// 	recipeToUpdate = req.body;
-		// 	console.log("after assignment" + recipeToUpdate.title);
-		// 	// recipeToUpdate.save();
-		// 	res.json({message: "recipe updated!"});
-		// });
-
-
 	} else {
-		// create new recipe
+		// Create new recipe
 		db.Recipe.create(req.body, function (err, recipe) {
 			console.log("This is the saved recipe!: " + recipe);
 			res.json({message: "recipe created!", _id: recipe._id});			
@@ -130,6 +118,12 @@ apiRouter.route('/recipe/:recipeId')
 .get(function (req, res) {
 	db.Recipe.findById(req.params.recipeId, function (error, response) {
 		res.json(response);
+	});
+})
+.delete(function (req, res) {
+	db.Recipe.remove({_id:req.params.recipeId}, function (error, recipe) {
+		if (error) return res.send(error);
+		res.json({message: 'Recipe Bleleted!'});
 	});
 });
 

@@ -12,22 +12,33 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 			alert("Can't publish a blank recipe");
 		} else {
 			$http.post('/api/recipes', $scope.Recipe)
-				.then(function (returnedObject) {
-					console.log(returnedObject.data.message);
-					console.log(returnedObject.data._id);					
-					if (returnedObject.data._id){
-						$scope.Recipe._id = returnedObject.data._id;
-					}
-				}, function (error) {
-					console.log(error);
-				});
+			.then(function (returnedObject) {
+				console.log(returnedObject.data.message);
+				console.log(returnedObject.data._id);					
+				if (returnedObject.data._id){
+					$scope.Recipe._id = returnedObject.data._id;
+				}
+			}, function (error) {
+				console.log(error);
+			});
 		}	
+	};
+
+	$scope.deleteRecipe = function () {
+		$http.delete('/api/recipe/' + $scope.Recipe._id)
+		.then(function (returnedObject) {
+			console.log(returnedObject.data.message);
+			$scope.startNewRecipe();
+		}, function (error) {
+			console.log(error);
+			}
+		);
 	};
 
 	$scope.startNewRecipe = function () {
 		// I wrote a method in the service that doesn't erase the Recipe
-
-		// Recipe.startNewRecipe();
+		// Now i'm erasing the service using the service method and scope method 
+		Recipe.startNewRecipe();
 		$scope.Recipe = {	
 			formVisible: false,		
 			images: [], 
