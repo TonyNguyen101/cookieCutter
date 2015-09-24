@@ -106,8 +106,21 @@ app.factory('Recipe', function () {
 			]
 		},
 		updateRecipe: function (replacementRecipe) {
-			console.log("This updateRecipe method working?" + replacementRecipe);
 			Recipe.recipe = replacementRecipe;
+		},
+		//Doesn't work on the scope for some reason
+		startNewRecipe: function () {
+			Recipe.recipe = {};
+			Recipe.recipe = {	
+				formVisible: false,		
+				images: [], 
+				score: 0,
+				comments: [],	
+				borrowers: [],
+				allIngredients: [],
+				vessels: []
+			};
+			console.log("this thing working?" + Recipe.recipe.title);
 		}
 	};	
 	return Recipe;

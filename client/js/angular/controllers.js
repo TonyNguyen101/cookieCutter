@@ -25,6 +25,9 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 	};
 
 	$scope.startNewRecipe = function () {
+		// I wrote a method in the service that doesn't erase the Recipe
+
+		// Recipe.startNewRecipe();
 		$scope.Recipe = {	
 			formVisible: false,		
 			images: [], 
