@@ -16,7 +16,9 @@ app.use(morgan('tiny'));
 
 var oldFolderIndex = __dirname.length - 7;
 var rootDir = __dirname.slice(0,oldFolderIndex);
-//////////
+
+console.log(rootDir);
+
 app.use(express.static(rootDir + '/app'));
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -34,7 +36,8 @@ app.use(function (req, res, next) {
 app.use('/api', apiRouter);
 //ROOT
 app.get('/', function (req, res) {
-	res.render('index');
+	console.log(rootDir);
+	res.render('index.ejs');
 });
 
 //INDEX
