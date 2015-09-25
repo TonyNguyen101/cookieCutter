@@ -134,6 +134,6 @@ app.get('*', function(req,res){
   res.render('errors/404.ejs');
 });
 
-app.listen(3001, function(){
+app.listen(process.env.PORT || 3001, function(){
   console.log("Server is listening on port 3001");
 });
