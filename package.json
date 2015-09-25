@@ -1,8 +1,8 @@
 {
-  "name": "withuitree",
+  "name": "cookiecutterwithuitree",
   "version": "1.0.0",
   "description": "",
-  "main": "./server/server.js",
+  "main": "server.js",
   "engines": {
     "node": "0.12.2",
     "npm": "2.14.4"

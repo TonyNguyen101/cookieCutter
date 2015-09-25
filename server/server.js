@@ -17,7 +17,6 @@ app.use(morgan('tiny'));
 var oldFolderIndex = __dirname.length - 7;
 var rootDir = __dirname.slice(0,oldFolderIndex);
 
-console.log(rootDir);
 
 app.use(express.static(rootDir + '/client'));
 
@@ -33,14 +32,17 @@ app.use(function (req, res, next) {
 });
 
 
-app.use('/api', apiRouter);
+
 //ROOT
 app.get('/', function (req, res) {
-	console.log("this is the oldFolderIndex " + __dirname);
+	console.log("this is the __dirname " + __dirname);
 	console.log('this is the rootDir ' + rootDir);
-	res.render('index.ejs');
+	// console.log(path.join(rootDir + '/server/views/index.html')) ;
+	res.sendFile(rootDir + '/server/views/index.html');
+	// res.render('index');
 });
 
+app.use('/api', apiRouter);
 //INDEX
 apiRouter.route('/users')
 .get(function (req, res) {
@@ -80,10 +82,6 @@ apiRouter.route('/users/:userId')
 		res.json({message: 'User Bleleted!'});
 	});
 });
-
-
-
-
 
 // Recipe Routes
 apiRouter.route('/recipes')
@@ -136,7 +134,8 @@ apiRouter.route('/recipe/:recipeId')
 
 //ERROR
 app.get('*', function(req,res){
-  res.render('errors/404.ejs');
+  res.sendFile(rootDir + '/server/views/errors/404.ejs');
+  // res.render('errors/404.ejs');
 });
 
 app.listen(process.env.PORT || 3001, function(){
