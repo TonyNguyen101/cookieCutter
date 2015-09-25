@@ -19,7 +19,7 @@ var rootDir = __dirname.slice(0,oldFolderIndex);
 
 console.log(rootDir);
 
-app.use(express.static(rootDir + '/app'));
+app.use(express.static(rootDir + '/client'));
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -36,7 +36,8 @@ app.use(function (req, res, next) {
 app.use('/api', apiRouter);
 //ROOT
 app.get('/', function (req, res) {
-	console.log('this is the rootDir' + rootDir);
+	console.log("this is the oldFolderIndex " + __dirname);
+	console.log('this is the rootDir ' + rootDir);
 	res.render('index.ejs');
 });
 
