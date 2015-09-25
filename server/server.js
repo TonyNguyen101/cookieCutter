@@ -36,7 +36,7 @@ app.use(function (req, res, next) {
 app.use('/api', apiRouter);
 //ROOT
 app.get('/', function (req, res) {
-	console.log(rootDir);
+	console.log('this is the rootDir' + rootDir);
 	res.render('index.ejs');
 });
 
