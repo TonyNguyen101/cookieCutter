@@ -131,7 +131,7 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 	$scope.addIngredientToAllIngredients = function (newAllIngredient) {
 		if (newAllIngredient.ingredientName !== '' && newAllIngredient.imperialQuantity !== ''){
 			newAllIngredient.comments = [];
-  		Recipe.allIngredients.push(newAllIngredient);
+  		$scope.Recipe.allIngredients.push(newAllIngredient);
   		$scope.tempIngredientBin.push(newAllIngredient);
   		this.newAllIngredient = '';
   	}	
