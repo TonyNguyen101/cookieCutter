@@ -16,7 +16,8 @@ app.use(morgan('tiny'));
 
 var oldFolderIndex = __dirname.length - 7;
 var rootDir = __dirname.slice(0,oldFolderIndex);
-app.use(express.static(rootDir + '/client'));
+//////////
+app.use(express.static(rootDir + '/app'));
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
