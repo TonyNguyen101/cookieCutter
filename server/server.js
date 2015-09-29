@@ -31,13 +31,10 @@ app.use(function (req, res, next) {
 	next();
 });
 
-
-
 //ROOT
 app.get('/', function (req, res) {
-	console.log("this is the __dirname " + __dirname);
-	console.log('this is the rootDir ' + rootDir);
-	// console.log(path.join(rootDir + '/server/views/index.html')) ;
+	// console.log("this is the __dirname " + __dirname);
+	// console.log('this is the rootDir ' + rootDir);
 	res.sendFile(rootDir + '/server/views/index.html');
 	// res.render('index');
 });
@@ -99,7 +96,6 @@ apiRouter.route('/recipes')
 		delete req.body._id;
 		db.Recipe.update({_id: findThisId}, req.body, function (err, recipe) {
 		// TODO add user auth
-			console.log("after assignment" + recipe);
 			if (err) {
 				res.status(404);
 				res.send(err);
@@ -110,7 +106,7 @@ apiRouter.route('/recipes')
 	} else {
 		// Create new recipe
 		db.Recipe.create(req.body, function (err, recipe) {
-			console.log("This is the saved recipe!: " + recipe);
+			// console.log("This is the saved recipe!: " + recipe);
 			res.json({message: "recipe created!", _id: recipe._id});			
 		});
 	}
@@ -122,15 +118,13 @@ apiRouter.route('/recipe/:recipeId')
 	db.Recipe.findById(req.params.recipeId, function (error, response) {
 		res.json(response);
 	});
-})
+}) //Delete Recipe
 .delete(function (req, res) {
 	db.Recipe.remove({_id:req.params.recipeId}, function (error, recipe) {
 		if (error) return res.send(error);
 		res.json({message: 'Recipe Bleleted!'});
 	});
 });
-
-
 
 //ERROR
 app.get('*', function(req,res){

@@ -111,7 +111,6 @@ app.factory('Recipe', function () {
 		//Doesn't work on the scope for some reason
 		startNewRecipe: function () {
 			delete Recipe.recipe;
-			// Recipe.recipe = {};
 			Recipe.recipe = {	
 				formVisible: false,		
 				images: [], 
@@ -121,7 +120,6 @@ app.factory('Recipe', function () {
 				allIngredients: [],
 				vessels: []
 			};
-			console.log("this thing working?" + Recipe.recipe.title);
 		}
 	};	
 	return Recipe;

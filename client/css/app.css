@@ -1,3 +1,57 @@
+body {
+    font-family: 'Bitter', serif;    
+}
+/*set ids for the far right and far left items (icon and search box) and flex those right and left*/
+
+.navbar-fixed {
+    background-color: blue;
+}
+
+.indexContainer {
+    /*background-color: #E8E0D3;*/
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    align-items: flex-start;
+}
+
+.indexBox {
+    /*border: 2px solid #E6AE33;*/
+    width: 350px;
+    height: 300px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    /*margin-top: 10px;*/
+    margin-bottom: 30px;
+    -webkit-box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+
+}
+
+.indexPics{
+    /*width: auto;*/
+    /*overflow: hidden;*/
+    width: 100%;
+    /*max-height: 80%;*/
+    height: 243px;
+    /*position: center;*/
+}
+
+.indexTitle {
+    background-color: #C8B08C;
+    height: 57px;
+    font-size: 20px;  
+    font-weight: 900;
+    color: white;
+    letter-spacing: 1px;
+    text-indent: 8px;
+
+}
+
 
 .container {
     font-family: 'Bitter', serif;
@@ -9,7 +63,8 @@
 
 /*Ghost Placeholder*/
 .angular-ui-tree-placeholder {
-    background: #AEB2B5;
+    /*background: #AEB2B5;*/
+    background: rgba(0,0,0,0.75);
     /*border-radius: 7px;*/
     /*border-top-right-radius: 0;*/
     /*border-bottom-right-radius: 0;*/
@@ -31,18 +86,13 @@
     margin-bottom: 15px;
 }
 .vesselBox:hover  {
-    /*background-color: #377F83;*/
-    /*border-radius: 10px;*/
-    opacity: .9;
-    -webkit-filter: brightness(90%);
+    /*-webkit-box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);*/
 }
 
 .actionBox {
-    /*background-color: #EC8469;*/
-    /*background-color: #377F83;*/
     background-color: #8BB94D;
-
-    /*border-radius: 7px;*/
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     min-height: 80px;
@@ -50,20 +100,18 @@
 .actionBox:hover  {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    /*opacity: .9;*/
-    /*-webkit-filter: brightness(90%);*/
+ /*   -webkit-box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);*/
 }
 
 .ingredientBox {
-    /*background-color: #EC8469;*/
     background-color: #7DBCD0;
-    /*background-color: #377F83;*/
-    /*background-color: #E6AE33;*/
-    /*border-radius: 7px;*/
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 .ingredientBox:hover  {
-    /*opacity: .9;*/
-    /*-webkit-filter: brightness(90%);*/
+ /*   -webkit-box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.75);*/
 }

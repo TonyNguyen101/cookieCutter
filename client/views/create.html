@@ -1,7 +1,5 @@
 <h1>I am the create page from the client views folder</h1>
 
-<a href="#/">index page</a>
-
   <div class="container">
 
     <!-- New All Ingredients Form -->
@@ -50,8 +48,8 @@
       <!-- <h3>Click&Drag to add to actions </h3>  -->
       
       <div ui-tree="movementOptions" data-nodrop-enabled="true">
-        <ul ui-tree-nodes ng-model="tempIngredientBin" data-type="action">
-          <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat="ingredient in tempIngredientBin" data-type="ingredient">
+        <ul ui-tree-nodes ng-model="tempIngredientBin" data-type="action" class="card-panel hoverable">
+          <li ui-tree-node ui-tree-handle class="ingredientBox" class="card-panel hoverable" ng-repeat="ingredient in tempIngredientBin" data-type="ingredient">
             {{ingredient.imperialQuantity}}
             {{ingredient.imperialUnits}}                        
             {{ingredient.ingredientName}}            
