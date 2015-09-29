@@ -10,24 +10,46 @@
 
 
 
-<div class="row">
-  <div class="col s12 m6" ng-repeat="recipe in allRecipes">
-    <div class="card small" ng-click="showRecipe(recipe._id)">
+<!-- <div class="row">
+  <div class="col s12 m4" ng-repeat="recipe in allRecipes">
+    <div class="card medium" ng-click="showRecipe(recipe._id)">
       <div class="card-image">
         <img src="{{recipe.images[0]}}">
         <span class="card-title">{{recipe.title}}</span>
       </div>
       <div class="card-content">
-        <p>{{recipe.details}}</p>
+        <p>{{recipe.description}}</p>
       </div>
       <div class="card-action">
         <a href="#">This is a link</a>
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="row">
+  <div class="col s12 m4" ng-repeat="recipe in allRecipes">
+
+		<div class="card medium hoverable">
+		  
+		  <div class="card-image" ng-click="showRecipe(recipe._id)">
+		    <img src="{{recipe.images[0]}}">
+		    <span class="card-title">{{recipe.title}}</span>
+		  </div>
+
+		  <div class="card-content activator">
+		    <span class="card-title grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+		    <p class="truncate">{{recipe.description}}</p>
+		  </div>
+
+		  <div class="card-reveal">
+		    <span class="card-title grey-text text-darken-4">{{recipe.title}}<i class="material-icons right">close</i></span>
+		    <p>{{recipe.description}}</p>
+		  </div>
+
+		</div>
+	</div>
 </div>
-
-
 
 <!-- <div class="container-fluid">
 	<div class="col-xs-6 col-sm-4" ng-repeat="recipe in allRecipes" ng-click="showRecipe(recipe._id)">
