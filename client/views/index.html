@@ -1,65 +1,28 @@
-<h1>I am the index.html from the client views</h1>
-<!-- <div class="indexContainer">
-	<div ng-repeat="recipe in allRecipes" ng-click="showRecipe(recipe._id)">
-		<div class="indexBox">
-			<img class="indexPics" src='{{recipe.images[0]}}'>
-			<div class="indexTitle">{{recipe.title}}</div>
+
+
+<div class="container">
+	<h1>I am the index.html from the client views</h1>
+	<div class="row">
+	  <div class="col s12 m4" ng-repeat="recipe in allRecipes">
+
+			<div class="card medium hoverable">
+			  
+			  <div class="card-image" ng-click="showRecipe(recipe._id)">
+			    <img src="{{recipe.images[0]}}">
+			    <span class="card-title">{{recipe.title}}</span>
+			  </div>
+
+			  <div class="card-content activator">
+			    <span class="card-title grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+			    <p>{{recipe.description}}</p>
+			  </div>
+
+			  <div class="card-reveal">
+			    <span class="card-title grey-text text-darken-4">{{recipe.title}}<i class="material-icons right">close</i></span>
+			    <p>{{recipe.description}}</p>
+			  </div>
+
+			</div>
 		</div>
 	</div>
-</div> -->
-
-
-
-<!-- <div class="row">
-  <div class="col s12 m4" ng-repeat="recipe in allRecipes">
-    <div class="card medium" ng-click="showRecipe(recipe._id)">
-      <div class="card-image">
-        <img src="{{recipe.images[0]}}">
-        <span class="card-title">{{recipe.title}}</span>
-      </div>
-      <div class="card-content">
-        <p>{{recipe.description}}</p>
-      </div>
-      <div class="card-action">
-        <a href="#">This is a link</a>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<div class="row">
-  <div class="col s12 m4" ng-repeat="recipe in allRecipes">
-
-		<div class="card medium hoverable">
-		  
-		  <div class="card-image" ng-click="showRecipe(recipe._id)">
-		    <img src="{{recipe.images[0]}}">
-		    <span class="card-title">{{recipe.title}}</span>
-		  </div>
-
-		  <div class="card-content activator">
-		    <span class="card-title grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-		    <p class="truncate">{{recipe.description}}</p>
-		  </div>
-
-		  <div class="card-reveal">
-		    <span class="card-title grey-text text-darken-4">{{recipe.title}}<i class="material-icons right">close</i></span>
-		    <p>{{recipe.description}}</p>
-		  </div>
-
-		</div>
-	</div>
-</div>
-
-<!-- <div class="container-fluid">
-	<div class="col-xs-6 col-sm-4" ng-repeat="recipe in allRecipes" ng-click="showRecipe(recipe._id)">
-		{{recipe.title}}
-		<div class="indexPics" ng-repeat="image in recipe.images">
-			<img height="50" src='{{image}}'>
-		</div>
-	</div>
-</div>
- -->
-<!-- <div class="col-sm-5">
-	<pre class="code">{{allRecipes | json}}</pre>	
-</div> -->
+</div>	
