@@ -11,15 +11,18 @@
 
 	<!-- Materialize CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
-  <!-- Hover CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.0.2/css/hover-min.css">
   <!-- Materialze Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<link rel="stylesheet" href="css/app.css">
+	<!-- <link rel="stylesheet" href="css/app.css"> -->
 	<link rel="stylesheet" href="css/angular-ui-tree.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/create.css">
+	<link rel="stylesheet" href="css/show.css">
 
 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+
+	<!-- Bitter Google Font -->
 	<link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
 	
@@ -37,12 +40,21 @@
     <nav>
       <div class="nav-wrapper amber darken-3">
         <a href="#!" class="brand-logo">Cookie Cutter</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/#/"><i class="material-icons left">view_module</i>Main</a></li>
-          <li><a href=""><i class="material-icons right">login</i>Login</a></li>
-
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
 					<!-- Stephan has code that can fix this active highlight button -->
-        	<li class="active"><a href="/#/create"><i class="material-icons right">library_add</i>Create</a></li>
+					<li>
+					<form>
+		        <div class="input-field">
+		          <input id="search" type="search" required>
+		          <label for="search"><i class="material-icons">search</i></label>
+		          <i class="material-icons">close</i>
+		        </div>
+      		</form>
+      		</li>
+          <li><a href="/#/"><i class="material-icons left">view_module</i>Main</a></li>
+        	<li><a href="/#/create"><i class="material-icons right">library_add</i>Create</a></li>
+          <li><a href="/#/"><i class="material-icons left">vpn_key</i>Login</a></li>			
+
         </ul>
       </div>
     </nav>
