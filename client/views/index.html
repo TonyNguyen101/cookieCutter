@@ -1,9 +1,7 @@
-
-
 <div class="container">
 	<h1>I am the index.html from the client views</h1>
 	<div class="row">
-	  <div class="col s12 m4" ng-repeat="recipe in allRecipes">
+	  <div class="col s12 m6 l4" ng-repeat="recipe in allRecipes">
 
 			<div class="card medium hoverable">
 			  
@@ -14,7 +12,7 @@
 
 			  <div class="card-content activator">
 			    <span class="card-title grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-			    <p>{{recipe.description}}</p>
+			    <p class="activator">{{recipe.description}}</p>
 			  </div>
 
 			  <div class="card-reveal">
