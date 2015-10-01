@@ -1,80 +1,37 @@
-<h1>Hi! This is the recipe show page</h1>
 
-<div class="container">
+
+<div class="container" ng-model="oneRecipe">
+<!-- add dynamic column when comparing recipes, move oneRecipe to left column -->
 	
-	<div ng-model="oneRecipe">
+	<h2 class="card-title grey-text">{{oneRecipe.title}}</h2>				
+  <div class="recipeHead z-depth-1">
+    <img class="showImg" src="{{oneRecipe.images[0]}}" alt="images/thumb_default.png">
+    <div class="row">
 
-
-     <!-- Page Layout here -->
-    <div class="row recipeHead">
-      <div class="card large">
-				
-				<div class="card-image col s7">
-	      	<img src="{{oneRecipe.images[0]}}" alt="images/thumb_default.png">
-				</div>
-
-	      <div class="col s5">
-	        <div class="row">
-						<h3>{{oneRecipe.title}}</h3>
-	        </div>
-
-	        <div class="row">
-						<p>{{oneRecipe.description}}</p>
-	        </div>
-
-	        <div class="row">
-	          
-	        </div>
-
-	      </div>
-			</div>
+      <div class="col l6 m6 s6 center">{{oneRecipe.totalTime}} mins</div> <!-- use plurize -->
+      <div class="col l6 m6 s6 center">{{oneRecipe.servings}}</div>
     </div>
-  	
-  	<!-- Page Layout here -->
-    <div class="recipeHead">
-      <div class="card large">
-				
-				<div class="card-image col s7">
-	      	<img src="{{oneRecipe.images[0]}}" alt="images/thumb_default.png">
-				</div>
+		
+		<div> <!-- make this hoverover expand -->
+			<p>{{oneRecipe.description}}</p>
+		</div>
 
-	      <div class="col s5">
-	        <div class="row">
-						<h3>{{oneRecipe.title}}</h3>
-	        </div>
+  </div>
+<div class="row">
+	<div class="ingredientHead z-depth-1 col l5 m12 s12">
+	 	<ul class="collection with-header">
+	    <li class="collection-header"><h5>Ingredients</h5></li>
+	    <li ng-repeat='ingredient in oneRecipe.allIngredients' class="collection-item">
+	      {{ingredient.imperialQuantity}}
+	      {{ingredient.imperialUnits}}                        
+	      {{ingredient.ingredientName}}         
+	    </li>
+	  </ul>
+	</div>
 
-	        <div class="row">
-						<p>{{oneRecipe.description}}</p>
-	        </div>
-
-	        <div class="row">
-	          
-	        </div>
-
-	      </div>
-			</div>
-    </div>
-
-
-
-  
-
-		<button ng-click="goToEditPage()">edit</button>
-
-    <h3>{{oneRecipe.title}}</h3>
-    <h4>{{oneRecipe.totalTime}} mins</h4>
-    <h4>{{oneRecipe._id}}</h4>
-    <br>
-    <img height="150" src='{{oneRecipe.images[0]}}'>
-    <h3>List of all ingredients</h3>
-    <ul ng-repeat='ingredient in oneRecipe.allIngredients'>
-      <li>            
-        {{ingredient.imperialQuantity}}
-        {{ingredient.imperialUnits}}                        
-        {{ingredient.ingredientName}}         
-      </li>     
-    </ul>
-    <!-- movementOptions are not in the SHOW page -->
+	<div class="ingredientHead z-depth-1 col l6 m12 s12 right">
+		<!-- movementOptions are not in the SHOW page -->
+    <!-- change data-drag-enabled to true when borrowing   -->
     <div ui-tree data-drag-enabled="false" class="col-xs-7" >
       <ol ui-tree-nodes ng-model="oneRecipe.vessels" data-type='recipe'>
         <li ui-tree-node ui-tree-handle ng-repeat='vessel in oneRecipe.vessels' data-type='vessel'>   
@@ -109,7 +66,53 @@
         </li>
       </ol>
     </div>  
-  </div>  
+	</div>
+</div>	
+	
+
+
+
+		<!-- Hide this for non-users -->
+		<button ng-click="goToEditPage()">edit</button>
+
+
+    <!-- movementOptions are not in the SHOW page -->
+    <!-- change data-drag-enabled to true when borrowing   -->
+    <div ui-tree data-drag-enabled="false" class="col-xs-7" >
+      <ol ui-tree-nodes ng-model="oneRecipe.vessels" data-type='recipe'>
+        <li ui-tree-node ui-tree-handle ng-repeat='vessel in oneRecipe.vessels' data-type='vessel'>   
+          <!-- Vessel div -->
+          <div class="row vesselBox" ng-if="!vessel.transition">
+            {{vessel.vesselName}}
+            <div ui-tree data-drag-enabled="false">
+              <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
+                  <li ui-tree-node ui-tree-handle ng-repeat='action in vessel.actions' data-type='action'>
+                    <div class="row">
+                      <div class="timeBox col-xs-1 col-sm-1">{{action.time}}</div>
+                      <div class="actionBox col-sm-11">
+                        {{action.actionName}}
+
+                        <div ui-tree data-drag-enabled="false">
+                          <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>
+                            <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='ingredient'>
+                                {{ingredient.imperialQuantity}}
+                                {{ingredient.imperialUnits}}                        
+                                {{ingredient.ingredientName}}
+                            </li>
+                          </ol>
+                        </div>
+                       </div> 
+                    </div>
+                  </li>
+              </ol>
+            </div>
+          </div>
+					<!-- Transition div -->
+          <div class="row actionBox" ng-if="vessel.transition">{{vessel.vesselName}}</div>
+        </li>
+      </ol>
+    </div>  
+  <!-- </div>   -->
 </div>
 
 <div class="col-sm-5" ng-if="recipeRecipesSwitch">

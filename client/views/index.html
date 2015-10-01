@@ -3,9 +3,9 @@
 	<div class="row">
 	  <div class="col s12 m6 l4" ng-repeat="recipe in allRecipes">
 
-			<div class="card medium hoverable">
+			<div class="card medium">
 			  
-			  <div class="card-image" ng-click="showRecipe(recipe._id)">
+			  <div class="card-image hoverable" ng-click="showRecipe(recipe._id)">
 			    <img src="{{recipe.images[0]}}">
 			    <span class="card-title">{{recipe.title}}</span>
 			  </div>
