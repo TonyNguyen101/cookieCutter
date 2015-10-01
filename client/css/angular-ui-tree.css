@@ -16,14 +16,10 @@
 }
 
 .angular-ui-tree-nodes {
-    position: relative;
+    /*position: relative;*/
     margin: 0;
     padding: 0;
     list-style: none;
-}
-
-.angular-ui-tree-nodes .angular-ui-tree-nodes {
-    padding-left: 20px;
 }
 
 .angular-ui-tree-node, .angular-ui-tree-placeholder {
@@ -45,20 +41,19 @@
 }
 
 .angular-ui-tree-handle {
-    cursor: move;
+    /*cursor: move;*/
     cursor: -webkit-grab;
-    text-decoration: none;
-    font-weight: bold;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    /*box-sizing: border-box;*/
-    min-height: 20px;
-    line-height: 20px;
+    /*text-decoration: none;*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+    box-sizing: border-box;
+    /*min-height: 20px;*/
+    /*line-height: 20px;*/
 }
 
 .angular-ui-tree-drag {
     transform: rotate(3deg);
-    cursor: move;
+    /*cursor: move;*/
     /*Need to make this grabbing fist work somehow*/
     cursor: -webkit-grabbing;
     position: absolute;
