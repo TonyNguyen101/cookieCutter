@@ -178,25 +178,29 @@ app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams'
 	};
 
 	$scope.backToAllRecipes = function () {
-		$scope.recipeRecipesSwitch = !$scope.recipeRecipesSwitch;
+		if ($scope.anotherRecipe) {
+			$scope.recipeRecipesSwitch = !$scope.recipeRecipesSwitch;			
+		}
 	};
 
-	$scope.mainColumn = "col l12";
+	$scope.mainColumn = "col l11 m11 s11";
 	$scope.ingredientsColumn = "col l5 m5 s12";
 	$scope.guideColumn = "col l6 m6 s12 right";
+	$scope.compareRecipe = false;
 
 	$scope.narrowColumn = function () {
 		// One recipe view
-		if ($scope.mainColumn === "col l6") {
-			$scope.mainColumn = "col l12";
-			$scope.ingredientsColumn = "col l5 m5 s12";
-			$scope.guideColumn = "col l6 m6 s12 right";
+		if ($scope.compareRecipe === true) {
+			$scope.mainColumn = "col l11 m11 s11";
+			$scope.ingredientsColumn = "col l5 m5 s11";
+			$scope.guideColumn = "col l6 m6 s11 right";
 		// Two recipe comparison view
 		} else { 
-			$scope.mainColumn = "col l6";
-			$scope.ingredientsColumn = "col l12 m12 s12";
-			$scope.guideColumn = "col l12 m12 s12";
+			$scope.mainColumn = "col l6 m6 s6";
+			$scope.ingredientsColumn = "col l11 m11 s11";
+			$scope.guideColumn = "col l11 m11 s11";
 		}
+		$scope.compareRecipe = !$scope.compareRecipe;
 	};
 
 

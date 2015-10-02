@@ -1,9 +1,8 @@
 <button ng-click="narrowColumn()">switch!</button>
-
+<button ng-click="backToAllRecipes()">back</button>
 <div class="container">
-	<div class="row" ng-model="oneRecipe">
-		<div ng-class='mainColumn'>
-
+	<div class="row">
+		<div ng-class='mainColumn' ng-model="oneRecipe">
 			<h2 class="card-title grey-text">{{oneRecipe.title}}</h2>				
 		  <div class="recipeHead z-depth-1">
 		    <img class="showImg" src="{{oneRecipe.images[0]}}" alt="images/thumb_default.png">
@@ -68,77 +67,104 @@
 				    </div>  
 				</div>
 			</div>
-
 		</div>
 		
-		<div class="col l6">
-			<!-- comparison here -->
+		<div class="col l6 m6 s6" ng-if="compareRecipe">
+		<h2 class="card-title grey-text">Compare</h2>
+			<!-- Compare Index -->
+			<div class="col l8 m8 s8 right" ng-if="recipeRecipesSwitch">
+				<div ng-repeat="recipe in allRecipes" ng-click="showOneRecipe(recipe._id)">				
+					<div class="card small">
+					  <div class="card-image hoverable" ng-click="showRecipe(recipe._id)">
+					    <img src="{{recipe.images[0]}}">
+					    <span class="card-title">{{recipe.title}}</span>
+					  </div>
+					  <div class="card-content activator">
+					    <span class="card-title grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+					    <p class="activator">{{recipe.description}}</p>
+					  </div>
+					  <div class="card-reveal">
+					    <span class="card-title grey-text text-darken-4">{{recipe.title}}<i class="material-icons right">close</i></span>
+					    <p>{{recipe.description}}</p>
+					  </div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Compare One Recipe -->
+			<div class="col l11 m11 s11 right" ng-model="anotherRecipe" ng-if="!recipeRecipesSwitch">
+				<h2 class="card-title grey-text">{{anotherRecipe.title}}</h2>				
+			  <div class="recipeHead z-depth-1">
+			    <img class="showImg" src="{{anotherRecipe.images[0]}}" alt="images/thumb_default.png">
+			    <div class="row">
+			      <div class="col l6 m6 s6 center">{{anotherRecipe.totalTime}} mins</div> <!-- use plurize -->
+			      <div class="col l6 m6 s6 center">{{anotherRecipe.servings}}</div>
+			    </div>
+					<div> <!-- make this hoverover expand -->
+						<p>{{anotherRecipe.description}}</p>
+					</div>
+			  </div>
+				<div class="row">
+					<div class="col l12 m12 s12"> <!-- Ingredients Column -->
+						<h5 class="card-title grey-text">Ingredients</h5>
+						<div class="ingredientHead z-depth-1">
+						 	<ul class="collection">
+						    <!-- <li class="collection-header"><h5>Ingredients</h5></li> -->
+						    <li ng-repeat='ingredient in anotherRecipe.allIngredients' class="collection-item">
+						      {{ingredient.imperialQuantity}}
+						      {{ingredient.imperialUnits}}                        
+						      {{ingredient.ingredientName}}         
+						    </li>
+						  </ul>
+						</div>
+					</div>
+					<div class="col l12 m12 s12">	<!-- Guide Column -->
+						<h5 class="card-title grey-text">Guide</h5>
+							<!-- movementOptions are not in the SHOW page -->
+					    <div ui-tree data-drag-enabled="false"> <!-- Vessel div -->
+					      <ol ui-tree-nodes ng-model="anotherRecipe.vessels" data-type='recipe'>
+					        <li ui-tree-node ui-tree-handle ng-repeat='vessel in anotherRecipe.vessels' data-type='vessel'>   
+					          <div class="vesselBox" class="z-depth-1" ng-if="!vessel.transition">
+					            {{vessel.vesselName}}
+					            <div ui-tree data-drag-enabled="false"> <!-- Action Div -->
+					              <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
+					                <li ui-tree-node ui-tree-handle class="actionBox" ng-repeat='action in vessel.actions' data-type='action'>
+						                {{action.actionName}}
+														<div class="timeIngredientsBox"> <!-- Time Ingredient Box -->									
+															<div class="timeBox"> <!-- Time Box -->
+																<div>{{action.time}}</div>
+																<i class="material-icons">query_builder</i>
+															</div>
+						                  <div ui-tree class="ingredientsBox" data-drag-enabled="false"> <!-- Ingredient Box -->
+						                    <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>
+						                      <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='ingredient'>
+					                          {{ingredient.imperialQuantity}}
+					                          {{ingredient.imperialUnits}}                        
+					                          {{ingredient.ingredientName}}
+						                      </li>
+						                    </ol>
+						                  </div>
+														</div>
+					                </li>
+					              </ol>
+					            </div>
+					          </div>
+										<!-- Transition div -->
+					          <div class="transitionBox" class="z-depth-1" ng-if="vessel.transition">{{vessel.vesselName}}</div>
+					        </li>
+					      </ol>
+					    </div>  
+					</div>
+				</div>
+			</div>
 		</div>
-
-	</div>
-
-
-
-</div>
-
-<div class="col l6" ng-if="recipeRecipesSwitch">
-	<div class="col-xs-6 col-sm-4" ng-repeat="recipe in allRecipes" ng-click="showOneRecipe(recipe._id)">
-		{{recipe.title}}
-		<div class="indexPics" ng-repeat="image in recipe.images">
-			<img height="50" src='{{image}}'>
-		</div>
 	</div>
 </div>
 
-<div class="col l6" ng-if="!recipeRecipesSwitch">
-  <div ng-model="anotherRecipe">    
-    <h3>{{anotherRecipe.title}}</h3>
-    <h4>{{anotherRecipe.totalTime}} mins</h4>
-    <h4>{{anotherRecipe._id}}</h4>
-    <br>
-    <img height="150" src='{{anotherRecipe.images[0]}}'>
-    <h3>List of all ingredients</h3>
-    <ul ng-repeat='ingredient in anotherRecipe.allIngredients'>
-      <li>            
-        {{ingredient.imperialQuantity}}
-        {{ingredient.imperialUnits}}                        
-        {{ingredient.ingredientName}}         
-      </li>     
-    </ul>
-    <!-- movementOptions are not in this $scope -->
-    <div ui-tree data-drag-enabled="false" class="col-xs-7" >
-      <ol ui-tree-nodes ng-model="anotherRecipe.vessels" data-type='recipe'>
-        <li ui-tree-node ui-tree-handle ng-repeat='vessel in anotherRecipe.vessels' data-type='vessel'>
-        	<!-- Vessel div -->
-          <div class="row vesselBox" ng-if="!vessel.transition">
-            {{vessel.vesselName}}
-            <div ui-tree data-drag-enabled="false">
-              <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
-                  <li ui-tree-node ui-tree-handle ng-repeat='action in vessel.actions' data-type='action'>
-                    <div class="row">
-                      <div class="timeBox col-xs-1 col-sm-1">{{action.time}}</div>
-                      <div class="actionBox col-sm-11">
-                        {{action.actionName}}
-                        <div ui-tree data-drag-enabled="false">
-                          <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>
-                            <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='ingredient'>
-                                {{ingredient.imperialQuantity}}
-                                {{ingredient.imperialUnits}}                        
-                                {{ingredient.ingredientName}}
-                            </li>
-                          </ol>
-                        </div>
-                       </div> 
-                    </div>
-                  </li>
-              </ol>
-            </div>
-          </div>
-          <!-- Transition div -->
-          <div class="row actionBox" ng-if="vessel.transition">{{vessel.vesselName}}</div>
-        </li>
-      </ol>
-    </div>  
-  </div>
-  <button ng-click="backToAllRecipes()">back</button>  
-</div>
+
+
+
+
+
+		
+
