@@ -70,9 +70,9 @@
 		</div>
 		
 		<div class="col l6 m6 s6" ng-if="compareRecipe">
-		<h2 class="card-title grey-text">Compare</h2>
+		<!-- <h2 class="card-title grey-text">Compare</h2> -->
 			<!-- Compare Index -->
-			<div class="col l8 m8 s8 right" ng-if="recipeRecipesSwitch">
+			<div class="col l8 m8 s8" ng-if="recipeRecipesSwitch">
 				<div ng-repeat="recipe in allRecipes" ng-click="showOneRecipe(recipe._id)">				
 					<div class="card small">
 					  <div class="card-image hoverable" ng-click="showRecipe(recipe._id)">
@@ -92,7 +92,7 @@
 			</div>
 
 			<!-- Compare One Recipe -->
-			<div class="col l11 m11 s11 right" ng-model="anotherRecipe" ng-if="!recipeRecipesSwitch">
+			<div class="col l12 m12 s12 right" ng-model="anotherRecipe" ng-if="!recipeRecipesSwitch">
 				<h2 class="card-title grey-text">{{anotherRecipe.title}}</h2>				
 			  <div class="recipeHead z-depth-1">
 			    <img class="showImg" src="{{anotherRecipe.images[0]}}" alt="images/thumb_default.png">

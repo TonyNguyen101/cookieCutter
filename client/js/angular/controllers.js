@@ -183,7 +183,7 @@ app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams'
 		}
 	};
 
-	$scope.mainColumn = "col l11 m11 s11";
+	$scope.mainColumn = "col l12 m12 s12";
 	$scope.ingredientsColumn = "col l5 m5 s12";
 	$scope.guideColumn = "col l6 m6 s12 right";
 	$scope.compareRecipe = false;
@@ -191,7 +191,7 @@ app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams'
 	$scope.narrowColumn = function () {
 		// One recipe view
 		if ($scope.compareRecipe === true) {
-			$scope.mainColumn = "col l11 m11 s11";
+			$scope.mainColumn = "col l12 m12 s12";
 			$scope.ingredientsColumn = "col l5 m5 s11";
 			$scope.guideColumn = "col l6 m6 s11 right";
 		// Two recipe comparison view
