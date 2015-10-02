@@ -181,6 +181,16 @@ app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams'
 		$scope.recipeRecipesSwitch = !$scope.recipeRecipesSwitch;
 	};
 
+	$scope.showColumn = "col l12";
+	$scope.narrowColumn = function () {
+		if ($scope.showColumn === "col l6") {
+			$scope.showColumn = "col l12";
+		} else {
+			$scope.showColumn = "col l6";
+		}
+	};
+
+
 }]);
 
 
