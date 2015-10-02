@@ -1,8 +1,108 @@
 <h1>I am the create page from the client views folder</h1>
 
-  <div class="container">
-    
+<div class="container">
+  
+  <div class="row">
+    <div class="col l5 m5 s12"> <!-- allIngredients Column -->
+      <h5 class="card-title grey-text">Ingredients</h5>
+      <div class="ingredientHead z-depth-1">
+        <ul class="collection">
+          <!-- <li class="collection-header"><h5>Ingredients</h5></li> -->
+          <li ng-repeat='ingredient in Recipe.allIngredients' class="collection-item">
+            {{ingredient.imperialQuantity}}
+            {{ingredient.imperialUnits}}                        
+            {{ingredient.ingredientName}}         
+          </li>
+        </ul>
+      </div>
 
+
+      <form name="allIngredientsForm" ng-submit="addIngredientToAllIngredients(newAllIngredient)" class="form-group" novalidate>        
+      <input type="text" ng-model="newAllIngredient.imperialQuantity" class="form-control" placeholder="ammount">
+      <input type="text" ng-model="newAllIngredient.imperialUnits" class="form-control" placeholder="unit">        
+      <input type="text" ng-model="newAllIngredient.ingredientName" class="form-control" placeholder="name">
+      <input type="text" ng-model="newAllIngredient.description" class="form-control" placeholder="description (optional)">
+      <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
+      </form>
+
+
+
+      <h5 class="card-title grey-text">Click&Drag to add to Guide</h5>
+      <div ui-tree="movementOptions" data-nodrop-enabled="true">
+        <ul ui-tree-nodes ng-model="tempIngredientBin" data-type="action">
+          <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat="ingredient in tempIngredientBin" data-type="ingredient">
+            {{ingredient.imperialQuantity}}
+            {{ingredient.imperialUnits}}                        
+            {{ingredient.ingredientName}}            
+          </li>
+        </ul>
+      </div>
+
+
+
+    </div>
+    
+    <div class="col l6 m6 s12 right"> <!-- Guide Column -->
+      <h5 class="card-title grey-text">Guide</h5>
+      <div ui-tree="movementOptions">
+        <ol ui-tree-nodes ng-model="Recipe.vessels" data-type='recipe'>
+          <li ui-tree-node ui-tree-handle ng-repeat='vessel in Recipe.vessels' data-type='vessel'>   
+            <!-- Vessel div -->
+            <div class="vesselBox" class="z-depth-1" ng-if="!vessel.transition">
+              {{vessel.vesselName}}
+              <div ui-tree="movementOptions">
+                <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
+                  <li ui-tree-node ui-tree-handle class="actionBox" ng-repeat='action in vessel.actions' data-type='action'>
+                    {{action.actionName}}
+                    <div class="timeIngredientsBox">                      
+                      <div class="timeBox">
+                        <div>{{action.time}}</div>
+                        <i class="material-icons">query_builder</i>
+                      </div>
+                      <div ui-tree="movementOptions" class="ingredientsBox">
+                        <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>
+                          <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='ingredient'>
+                            {{ingredient.imperialQuantity}}
+                            {{ingredient.imperialUnits}}                        
+                            {{ingredient.ingredientName}}
+                          </li>
+                        </ol>
+                        <!-- New Ingredient Form -->
+                        <div class="hideForm" ng-if="action.formVisible">
+                          <form name="ingredientForm" ng-submit="addIngredientToAction(ingredientForm.$valid)" class="form-group" novalidate>
+                            <!-- New Ingredient Form -->
+                          <input type="text" ng-model="newIngredient.imperialQuantity" class="form-control" placeholder="ammount">
+                          <input type="text" ng-model="newIngredient.imperialUnits" class="form-control" placeholder="unit">        
+                          <input type="text" ng-model="newIngredient.ingredientName" class="form-control" placeholder="name">
+                          <input type="text" ng-model="newIngredient.description" class="form-control" placeholder="description (optional)">
+                          <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
+                          </form>
+                        </div>
+                        <a href="" ng-click="toggleForm(this)">New ingredient form!</a>
+                      </div>
+                    </div>
+                  </li>
+                </ol>
+
+                <div class="hideForm" ng-if="vessel.formVisible">
+                  <form name="actionForm" ng-submit="addAction(actionForm.$valid)" class="form-group" novalidate>
+                    <input type="text" ng-model="newAction.actionName" class="form-control" placeholder="new action">
+                    <input type="number" ng-model="newAction.time" class="form-control" placeholder="duration">
+                    <input type="text" ng-model="newAction.description" class="form-control" placeholder="description (optional)">     
+                    <input type="submit" class="btn btn-primary" ng-disabled="actionForm.$invalid" value="add">
+                  </form>
+                </div>
+                <a href="" ng-click="toggleForm(this)">New action form!</a>
+
+              </div>
+            </div>
+            <!-- Transition div -->
+            <div class="transitionBox" class="z-depth-1" ng-if="vessel.transition">{{vessel.vesselName}}</div>
+          </li>
+        </ol>
+      </div>  
+    </div>
+  </div>  
 
     <!-- New All Ingredients Form -->
     <div class="hideForm">
