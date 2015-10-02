@@ -32,10 +32,8 @@
 		</div>
 	</div>
 	
-	<div class="col l7 m7 s12 right">	<!-- Guide Column -->
+	<div class="col l6 m6 s12 right">	<!-- Guide Column -->
 		<h5 class="card-title grey-text">Guide</h5>
-		<!-- do i need this z-depth or should I put it on each block? -->
-		<!-- <div class="z-depth-1"> -->
 			<!-- movementOptions are not in the SHOW page -->
 	    <!-- change data-drag-enabled to true when borrowing: place boolean variable in $scope and change it when the user clicks borrow button    -->
 	    <div ui-tree data-drag-enabled="false">
@@ -46,25 +44,29 @@
 	            {{vessel.vesselName}}
 	            <div ui-tree data-drag-enabled="false">
 	              <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
-	                  <li ui-tree-node ui-tree-handle ng-repeat='action in vessel.actions' data-type='action' class="row timeActionBox">
-	                    <!-- <div class="timeActionBox"> -->
-	                      
-	                      <div class="timeBox">{{action.time}}<br><i class="material-icons">query_builder</i></div>
-	                      <div class="actionBox">
-	                        {{action.actionName}}
+	                <li ui-tree-node ui-tree-handle class="actionBox" ng-repeat='action in vessel.actions' data-type='action'>
+		                {{action.actionName}}
+										
+										<div class="timeIngredientsBox">											
 
-	                        <div ui-tree data-drag-enabled="false">
-	                          <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>
-	                            <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='ingredient'>
-	                                {{ingredient.imperialQuantity}}
-	                                {{ingredient.imperialUnits}}                        
-	                                {{ingredient.ingredientName}}
-	                            </li>
-	                          </ol>
-	                        </div>
-	                       </div> 
-	                    <!-- </div> -->
-	                  </li>
+											<div class="timeBox">
+												<div>{{action.time}}</div>
+												<i class="material-icons">query_builder</i>
+											</div>
+											
+		                  <div ui-tree class="ingredientsBox" data-drag-enabled="false">
+		                    <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>
+		                      <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='ingredient'>
+	                          {{ingredient.imperialQuantity}}
+	                          {{ingredient.imperialUnits}}                        
+	                          {{ingredient.ingredientName}}
+		                      </li>
+		                    </ol>
+		                  </div>
+
+										</div>
+
+	                </li>
 	              </ol>
 	            </div>
 	          </div>
