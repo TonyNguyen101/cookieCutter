@@ -2,8 +2,7 @@
 
 <div class="container">
 	<div class="row" ng-model="oneRecipe">
-		<!-- <div class="col l12"> -->
-		<div ng-class='showColumn'>
+		<div ng-class='mainColumn'>
 
 			<h2 class="card-title grey-text">{{oneRecipe.title}}</h2>				
 		  <div class="recipeHead z-depth-1">
@@ -17,7 +16,7 @@
 				</div>
 		  </div>
 			<div class="row">
-				<div class="col l5 m5 s12"> <!-- Ingredients Column -->
+				<div ng-class="ingredientsColumn"> <!-- Ingredients Column -->
 					<h5 class="card-title grey-text">Ingredients</h5>
 					<div class="ingredientHead z-depth-1">
 					 	<ul class="collection">
@@ -30,7 +29,7 @@
 					  </ul>
 					</div>
 				</div>
-				<div class="col l6 m6 s12 right">	<!-- Guide Column -->
+				<div ng-class="guideColumn">	<!-- Guide Column -->
 					<h5 class="card-title grey-text">Guide</h5>
 						<!-- movementOptions are not in the SHOW page -->
 				    <!-- change data-drag-enabled to true when borrowing: place boolean variable in $scope and change it when the user clicks borrow button    -->
@@ -73,7 +72,7 @@
 		</div>
 		
 		<div class="col l6">
-			
+			<!-- comparison here -->
 		</div>
 
 	</div>
@@ -91,7 +90,7 @@
 	</div>
 </div>
 
-<div class="col-sm-5" ng-if="!recipeRecipesSwitch">
+<div class="col l6" ng-if="!recipeRecipesSwitch">
   <div ng-model="anotherRecipe">    
     <h3>{{anotherRecipe.title}}</h3>
     <h4>{{anotherRecipe.totalTime}} mins</h4>

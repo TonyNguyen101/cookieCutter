@@ -181,12 +181,21 @@ app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams'
 		$scope.recipeRecipesSwitch = !$scope.recipeRecipesSwitch;
 	};
 
-	$scope.showColumn = "col l12";
+	$scope.mainColumn = "col l12";
+	$scope.ingredientsColumn = "col l5 m5 s12";
+	$scope.guideColumn = "col l6 m6 s12 right";
+
 	$scope.narrowColumn = function () {
-		if ($scope.showColumn === "col l6") {
-			$scope.showColumn = "col l12";
-		} else {
-			$scope.showColumn = "col l6";
+		// One recipe view
+		if ($scope.mainColumn === "col l6") {
+			$scope.mainColumn = "col l12";
+			$scope.ingredientsColumn = "col l5 m5 s12";
+			$scope.guideColumn = "col l6 m6 s12 right";
+		// Two recipe comparison view
+		} else { 
+			$scope.mainColumn = "col l6";
+			$scope.ingredientsColumn = "col l12 m12 s12";
+			$scope.guideColumn = "col l12 m12 s12";
 		}
 	};
 
