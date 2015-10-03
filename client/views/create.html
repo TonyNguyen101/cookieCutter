@@ -69,9 +69,10 @@
                                 <input type="text" ng-model="ingredient.imperialQuantity" placeholder="amount">
                                 <input type="text" ng-model="ingredient.imperialUnits" placeholder="units">
                                 <input type="text" ng-model="ingredient.ingredientName" placeholder="name">
+                                <input type="text" ng-model="ingredient.description" placeholder="description (optional)">
                               </div>
                               <div class="modal-footer">
-                                <a href="#/create" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                                <a href="#/create" class="modal-action modal-close waves-effect waves-green btn-flat">Done</a>
                               </div>
                             </div>
                           </li>
@@ -91,9 +92,34 @@
                         <a href="" ng-click="toggleForm(this)">New ingredient form!</a>
                       </div>
                     </div>
+                    <a data-nodrag class="btn modal-trigger" href="#{{action.$$hashKey | chopObject}}">edit</a>
+                    <!-- Action Edit Modal -->
+                    <div data-nodrag id="{{action.$$hashKey | chopObject}}" class="modal">
+                      <div class="modal-content">
+                        <h4>Edit action</h4>
+                        <input type="text" ng-model="action.actionName" placeholder="name">
+                        <input type="text" ng-model="action.time" placeholder="time">
+                        <input type="text" ng-model="action.description" placeholder="description (optional)">
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#/create" class="modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+                      </div>
+                    </div>
                   </li>
                 </ol>
 
+                <a data-nodrag class="btn modal-trigger" href="#{{vessel.$$hashKey | chopObject}}">edit</a>
+                <!-- Vessel Edit Modal -->
+                <div data-nodrag id="{{vessel.$$hashKey | chopObject}}" class="modal">
+                  <div class="modal-content">
+                    <h4>Edit vessel</h4>
+                    <input type="text" ng-model="vessel.vesselName" placeholder="name">
+                    <input type="text" ng-model="vessel.description" placeholder="description (optional)">
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#/create" class="modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+                  </div>
+                </div>
                 <div class="hideForm" ng-if="vessel.formVisible">
                   <form name="actionForm" ng-submit="addAction(actionForm.$valid)" class="form-group" novalidate>
                     <input type="text" ng-model="newAction.actionName" class="form-control" placeholder="new action">
@@ -103,11 +129,24 @@
                   </form>
                 </div>
                 <a href="" ng-click="toggleForm(this)">New action form!</a>
-
               </div>
             </div>
             <!-- Transition div -->
-            <div class="transitionBox" class="z-depth-1" ng-if="vessel.transition">{{vessel.vesselName}}</div>
+            <div class="transitionBox" class="z-depth-1" ng-if="vessel.transition">
+              {{vessel.vesselName}}
+              <a data-nodrag class="btn modal-trigger" href="#{{vessel.$$hashKey | chopObject}}">edit</a>
+              <!-- Transition Edit Modal -->
+              <div data-nodrag id="{{vessel.$$hashKey | chopObject}}" class="modal">
+                <div class="modal-content">
+                  <h4>Edit transition</h4>
+                  <input type="text" ng-model="vessel.vesselName" placeholder="transition">
+                </div>
+                <div class="modal-footer">
+                  <a href="#/create" class="modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+                </div>
+              </div>
+
+            </div>
           </li>
         </ol>
       </div>  
