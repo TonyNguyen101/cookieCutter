@@ -76,14 +76,17 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 			if ((srcType === "action" && dstType === "vessel") || 
 				(srcType === "ingredient" && dstType === "action") || 
 				(srcType === "vessel" && dstType === "recipe") ){
+				$('.modal-trigger').leanModal();
 				return true;
 			} else {
 				return false;
 			}
 		},
-		onSort: function (evt){
-    	console.log("something sorted!" + evt);
-    } 
+		dropped: function (event) {
+  		angular.element(document).ready(function() {
+  			$('.modal-trigger').leanModal();
+  	  });
+    }
 	};
 
 	// Steal node ID format
@@ -124,7 +127,12 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 			this.newIngredient.comments = [];
 			this.action.ingredients.push(this.newIngredient);
 			$scope.Recipe.allIngredients.push(this.newIngredient);
-  		this.newIngredient = '';  		
+  		this.newIngredient = '';
+			
+			angular.element(document).ready(function() {
+				$('.modal-trigger').leanModal();
+  		});
+
   	}
   };
 
@@ -136,6 +144,10 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
   		this.newAllIngredient = '';
   	}	
 	};
+
+	angular.element(document).ready(function() {
+		$('.modal-trigger').leanModal();
+  });
 
 }]);
 

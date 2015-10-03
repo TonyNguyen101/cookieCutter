@@ -1,9 +1,23 @@
-<h1>I am the create page from the client views folder</h1>
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#_73">Modal</a>
+  <button data-target="modal1" class="btn modal-trigger">Modal</button>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#/create" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+
 
 <div class="container">
   <div class="row">
     <div class="col l5 m5 s12"> <!-- allIngredients Column -->
-      <h5 class="card-title grey-text">Ingredients</h5>
+      <h5 class="card-title grey-text">INGREDIENTS</h5>
       <div class="ingredientHead z-depth-1">
         <ul class="collection">
           <li ng-repeat='ingredient in Recipe.allIngredients' class="collection-item">
@@ -37,7 +51,7 @@
     </div> <!-- col l5 m5 s12 -->
     
     <div class="col l6 m6 s12 right"> <!-- Guide Column -->
-      <h5 class="card-title grey-text">Guide</h5>
+      <h5 class="headings">GUIDE</h5>
       <div ui-tree="movementOptions">
         <ol ui-tree-nodes ng-model="Recipe.vessels" data-type='recipe'>
           <li ui-tree-node ui-tree-handle ng-repeat='vessel in Recipe.vessels' data-type='vessel'>   
@@ -61,19 +75,30 @@
                           <li ui-tree-node ui-tree-handle class="ingredientBox" ng-repeat='ingredient in action.ingredients' data-type='ingredient'>
                             {{ingredient.imperialQuantity}}
                             {{ingredient.imperialUnits}}                        
-                            {{ingredient.ingredientName}}
-
-
-                            
+                            {{ingredient.ingredientName}}  
                             <a class="right" data-nodrag ng-click="remove(this)">delete</a>
+                            <a data-nodrag class="btn modal-trigger" href="#{{ingredient.$$hashKey | chopObject}}">edit</a>
+                            <!-- Modal Structure -->
+                            <div data-nodrag id="{{ingredient.$$hashKey | chopObject}}" class="modal">
+                              <div class="modal-content">
+                                <h4>Edit Ingredient</h4>
+                                <input type="text" ng-model="ingredient.imperialQuantity" placeholder="amount">
+                                <input type="text" ng-model="ingredient.imperialUnits" placeholder="units">
+                                <input type="text" ng-model="ingredient.ingredientName" placeholder="name">
+                              </div>
+                              <div class="modal-footer">
+                                <a href="#/create" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                              </div>
+                            </div>
                           </li>
                         </ol>
+
                         <!-- New Ingredient Form -->
                         <div class="hideForm" ng-if="action.formVisible">
                           <form name="ingredientForm" ng-submit="addIngredientToAction(ingredientForm.$valid)" class="form-group" novalidate>
                             <!-- New Ingredient Form -->
                           <input type="text" ng-model="newIngredient.imperialQuantity" class="form-control" placeholder="amount">
-                          <input type="text" ng-model="newIngredient.imperialUnits" class="form-control" placeholder="unit">        
+                          <input type="text" ng-model="newIngredient.imperialUnits" class="form-control" placeholder="units">        
                           <input type="text" ng-model="newIngredient.ingredientName" class="form-control" placeholder="name">
                           <input type="text" ng-model="newIngredient.description" class="form-control" placeholder="description (optional)">
                           <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
