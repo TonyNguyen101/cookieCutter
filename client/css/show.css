@@ -7,20 +7,34 @@ body {
 }
 
 .vesselBox {
-    background-color: #ff8f00;
+    /*background-color: #ff8f00;*/
+    background-color: #F6C7D5;
+    /*border: 1px solid #FF0049;*/
     padding-bottom: 18px;
-    padding-left: 5px;
-    padding-top: 3px;
+    /* padding-left: 5px; */
+    /* padding-top: 3px; */
     /*min-height: 100px;*//*need this bc default is 15 r/l*/
     /* margin-bottom: 15px; */
     /*display:flex;*/
     margin-bottom: 10px;
     margin-top: 10px;
+    border-radius: 6px;
+    text-indent: 6px;
+    -webkit-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    -moz-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    font-weight: 900;
+    color: gray;
+    font-size: 150%
 }
 
 .transitionBox {
 	position: relative;
-	background-color: #8BB94D;
+	/*background-color: #8BB94D;*/
+    /*background-color: #FFE05D;*/
+    background-color: #FFF6CF;
+    /*border: 1px solid #FFCE00;*/
+    /*border: 1px solid #FFCE00;*/
 	min-height: 40px;
 	left: 30px;
 	margin-bottom: -10px;
@@ -28,16 +42,26 @@ body {
 	width: 92.5%;
 /* 	padding-left: 5px; */
 /*     padding-top: 3px; */
+    -webkit-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    -moz-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    font-weight: 900;
+    color: gray;
+    font-size: 150%
 }
 
 .actionBox {
-    background-color: #8BB94D;
+    /*background-color: #8BB94D;*/
+    background-color: #FFF6CF;
+    /*border: 1px solid #FFCE00;*/
     position: relative;
 /*     min-height: 60px; */
     padding-bottom: 18px;
     margin-bottom: 10px;
     left: 25px;
-    
+     -webkit-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    -moz-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    box-shadow: 0 0 15px -5px rgba(61,60,61,1);   
 }
 
 .timeIngredientsBox {
@@ -64,11 +88,13 @@ body {
     left: 23px;
     width: 95%
 
-
-
-
 }
 
 .ingredientBox {
-    background-color: #7DBCD0;
+    /*background-color: #7DBCD0;*/
+    background-color: #FFE7CF;
+    /*border: 1px solid #FF8100;*/
+    -webkit-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    -moz-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    box-shadow: 0 0 15px -5px rgba(61,60,61,1);
 }

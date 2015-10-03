@@ -1,5 +1,5 @@
 app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', function ($scope, $location, $http, Recipe) {
-  // Recipe service
+  // Recipe Service
   $scope.Recipe = Recipe.recipe;
   $scope.recipeFormVisible = true;
   $scope.transitionFormVisible = false;
