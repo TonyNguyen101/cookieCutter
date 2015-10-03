@@ -89,19 +89,6 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
     }
 	};
 
-	// Steal node ID format
- 	// $scope.newSubItem = function (scope) {
-  //   console.log(scope);
-  //   var nodeData = scope.$modelValue;
-  //   nodeData.nodes.push({
-  //     id: nodeData.id * 10 + nodeData.nodes.length,
-  //     title: nodeData.title + '.' + (nodeData.nodes.length + 1),
-  //     nodes: []
-  //   });
-  // };
-
-
-
   $scope.addVessel = function () {
   	if (this.newVessel.vesselName !== '') {
   		this.newVessel.formVisible = false;
