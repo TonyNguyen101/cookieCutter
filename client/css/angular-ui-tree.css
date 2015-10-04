@@ -16,6 +16,7 @@
 /*Ghost Placeholder*/
 .angular-ui-tree-placeholder {
     background: #AEB2B5;
+    border-radius: 6px;
     /*background: rgba(0,0,0,0.75);*/
     /*border-radius: 7px;*/
     /*border-top-right-radius: 0;*/
@@ -26,7 +27,7 @@
 .angular-ui-tree-nodes {
     /*position: relative;*/
     margin: 0;
-    padding: 0;
+/*     padding: 0; */
     list-style: none;
 }
 
