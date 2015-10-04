@@ -42,10 +42,18 @@
             <!-- Vessel div -->
             <div class="vesselBox" ng-if="!vessel.transition">
               {{vessel.vesselName}}
+              <div class="pencilTrashBox">
+                <i class="fa fa-pencil fa-fw modal-trigger"  data-nodrag href="#{{vessel.$$hashKey | chopObject}}"></i>
+                <i class="fa fa-trash-o fa-fw" data-nodrag ng-click="remove(this)"></i>
+              </div>
               <div ui-tree="movementOptions">
                 <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
                   <li ui-tree-node ui-tree-handle class="actionBox" ng-repeat='action in vessel.actions' data-type='action'>
                     {{action.actionName}}
+                    <div class="pencilTrashBox">
+                      <i class="fa fa-pencil fa-fw modal-trigger" data-nodrag href="#{{action.$$hashKey | chopObject}}"></i>
+                      <i class="fa fa-trash-o fa-fw" data-nodrag ng-click="remove(this)"></i>
+                    </div>
                     <div class="timeIngredientsBox">                      
                       <div class="timeBox">
                         <div>{{action.time}}</div>
@@ -57,8 +65,10 @@
                             {{ingredient.imperialQuantity}}
                             {{ingredient.imperialUnits}}                        
                             {{ingredient.ingredientName}}  
-                            <i class="fa fa-pencil fa-fw modal-trigger" data-nodrag href="#{{ingredient.$$hashKey | chopObject}}"></i>
-                            <i class="fa fa-trash-o fa-fw" data-nodrag ng-click="remove(this)"></i>
+                            <div class="pencilTrashBox">
+                              <i class="fa fa-pencil fa-fw modal-trigger" data-nodrag href="#{{ingredient.$$hashKey | chopObject}}"></i>
+                              <i class="fa fa-trash-o fa-fw" data-nodrag ng-click="remove(this)"></i>
+                            </div>
                             <!-- Modal Structure -->
                             <div data-nodrag id="{{ingredient.$$hashKey | chopObject}}" class="modal">
                               <div class="modal-content">
@@ -86,12 +96,11 @@
                           <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
                           </form>
                         </div>
-                        <a href="" ng-click="toggleForm(this)">New ingredient form!</a>
+
+                        <a class="actionIngredientForm" href="" ng-click="toggleForm(this)">+ ingredient...</a>
+
                       </div>
                     </div>
-                    <i class="fa fa-pencil fa-fw modal-trigger" data-nodrag href="#{{action.$$hashKey | chopObject}}"></i>
-
-                    <i class="fa fa-trash-o fa-fw" data-nodrag ng-click="remove(this)"></i>
                     <!-- Action Edit Modal -->
                     <div data-nodrag id="{{action.$$hashKey | chopObject}}" class="modal">
                       <div class="modal-content">
@@ -106,9 +115,6 @@
                     </div>
                   </li>
                 </ol>
-
-                <i class="fa fa-pencil fa-fw modal-trigger"  data-nodrag href="#{{vessel.$$hashKey | chopObject}}"></i>
-                <i class="fa fa-trash-o fa-fw" data-nodrag ng-click="remove(this)"></i>
                 <!-- Vessel Edit Modal -->
                 <div data-nodrag id="{{vessel.$$hashKey | chopObject}}" class="modal">
                   <div class="modal-content">
@@ -134,7 +140,10 @@
             <!-- Transition div -->
             <div class="transitionBox" class="z-depth-1" ng-if="vessel.transition">
               {{vessel.vesselName}}
-              <a data-nodrag class="btn modal-trigger" href="#{{vessel.$$hashKey | chopObject}}">edit</a>
+              <div class="pencilTrashBox">
+                <i class="fa fa-pencil fa-fw modal-trigger" data-nodrag href="#{{vessel.$$hashKey | chopObject}}"></i>
+                <i class="fa fa-trash-o fa-fw" data-nodrag ng-click="remove(this)"></i>
+              </div>
               <!-- Transition Edit Modal -->
               <div data-nodrag id="{{vessel.$$hashKey | chopObject}}" class="modal">
                 <div class="modal-content">

@@ -40,7 +40,7 @@
 }
 
 .angular-ui-tree-hidden {
-    /*display: none;*/
+    display: none;
 }
 
 .angular-ui-tree-placeholder {
@@ -51,13 +51,11 @@
 
 .angular-ui-tree-handle {
     /*cursor: move;*/
-    cursor: 
-    
-    -webkit-grab;
+    cursor: -webkit-grab;
     /*text-decoration: none;*/
     /*-webkit-box-sizing: border-box;*/
     /*-moz-box-sizing: border-box;*/
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
     /*min-height: 20px;*/
     /*line-height: 20px;*/
 }
@@ -68,7 +66,17 @@
     /*Need to make this grabbing fist work somehow*/
     cursor: -webkit-grabbing;
     position: absolute;
-    pointer-events: none;
-    z-index: 999;
+    /*pointer-events: none;*/
+    /*z-index: 999;*/
     opacity: .8;
+/*    font-size: 190%;
+    font-weight: 900;
+    color: gray;*/
 }
+
+.angular-ui-tree-drag {
+    font-size: 190%;
+    font-weight: 900;
+    color: gray;
+}
+
