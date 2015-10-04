@@ -7,9 +7,15 @@
 			<h2 class="card-title grey-text">{{oneRecipe.title}}</h2>				
 		  <div class="recipeHead z-depth-1">
 		    <img class="showImg" src="{{oneRecipe.images[0]}}" alt="images/thumb_default.png">
-		    <div class="row">
-		      <div class="col l6 m6 s6 center">{{oneRecipe.totalTime}} mins</div> <!-- use plurize -->
-		      <div class="col l6 m6 s6 center">{{oneRecipe.servings}}</div>
+		    <div class="row showTimeServings center">
+		      <div class="col l6 m6 s6 center showTime">
+		      	<i class="fa fa-clock-o"></i>
+		      	{{oneRecipe.totalTime}} Mins
+		      </div> <!-- use plurize -->
+		      <div class="col l6 m6 s6 center showServings">
+		      	<i class="fa fa-cutlery"></i>
+		      	{{oneRecipe.servings}} Servings
+		      </div>
 		    </div>
 				<div> <!-- make this hoverover expand -->
 					<p>{{oneRecipe.description}}</p>
@@ -45,7 +51,7 @@
 													<div class="timeIngredientsBox"> <!-- Time Ingredient Box -->									
 														<div class="timeBox"> <!-- Time Box -->
 															<div>{{action.time}}</div>
-															<i class="material-icons">query_builder</i>
+															<i class="fa fa-clock-o"></i>
 														</div>
 					                  <div ui-tree class="ingredientsBox" data-drag-enabled="false"> <!-- Ingredient Box -->
 					                    <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>

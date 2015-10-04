@@ -37,14 +37,11 @@
     <div class="col l6 m6 s12 right"> <!-- Guide Column -->
       <h5 class="headings">GUIDE</h5>
       <div ui-tree="movementOptions">
-        <ol ui-tree-nodes ng-model="Recipe.vessels" data-type='recipe'>
+        <ol ui-tree-nodes class="recipeOl" ng-model="Recipe.vessels" data-type='recipe'>
           <li ui-tree-node ui-tree-handle ng-repeat='vessel in Recipe.vessels' data-type='vessel'>   
             <!-- Vessel div -->
             <div class="vesselBox" ng-if="!vessel.transition">
               {{vessel.vesselName}}
-
-              <i class="fa fa-cutlery"></i>
-
               <div ui-tree="movementOptions">
                 <ol ui-tree-nodes ng-model='vessel.actions' data-type='vessel'>
                   <li ui-tree-node ui-tree-handle class="actionBox" ng-repeat='action in vessel.actions' data-type='action'>
@@ -60,8 +57,8 @@
                             {{ingredient.imperialQuantity}}
                             {{ingredient.imperialUnits}}                        
                             {{ingredient.ingredientName}}  
-                            <a class="right" data-nodrag ng-click="remove(this)">delete</a>
-                            <a data-nodrag class="btn modal-trigger" href="#{{ingredient.$$hashKey | chopObject}}">edit</a>
+                            <i class="fa fa-pencil fa-fw modal-trigger" data-nodrag href="#{{ingredient.$$hashKey | chopObject}}"></i>
+                            <i class="fa fa-trash-o fa-fw" data-nodrag ng-click="remove(this)"></i>
                             <!-- Modal Structure -->
                             <div data-nodrag id="{{ingredient.$$hashKey | chopObject}}" class="modal">
                               <div class="modal-content">
@@ -92,7 +89,9 @@
                         <a href="" ng-click="toggleForm(this)">New ingredient form!</a>
                       </div>
                     </div>
-                    <a data-nodrag class="btn modal-trigger" href="#{{action.$$hashKey | chopObject}}">edit</a>
+                    <i class="fa fa-pencil fa-fw modal-trigger" data-nodrag href="#{{action.$$hashKey | chopObject}}"></i>
+
+                    <i class="fa fa-trash-o fa-fw" data-nodrag ng-click="remove(this)"></i>
                     <!-- Action Edit Modal -->
                     <div data-nodrag id="{{action.$$hashKey | chopObject}}" class="modal">
                       <div class="modal-content">
@@ -108,7 +107,8 @@
                   </li>
                 </ol>
 
-                <a data-nodrag class="btn modal-trigger" href="#{{vessel.$$hashKey | chopObject}}">edit</a>
+                <i class="fa fa-pencil fa-fw modal-trigger"  data-nodrag href="#{{vessel.$$hashKey | chopObject}}"></i>
+                <i class="fa fa-trash-o fa-fw" data-nodrag ng-click="remove(this)"></i>
                 <!-- Vessel Edit Modal -->
                 <div data-nodrag id="{{vessel.$$hashKey | chopObject}}" class="modal">
                   <div class="modal-content">
