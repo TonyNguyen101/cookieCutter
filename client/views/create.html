@@ -86,21 +86,16 @@
                         </ol>
 
                         <!-- New Ingredient Form -->
-                        <div class="hideForm" ng-if="action.formVisible">
-                          <form name="ingredientForm" ng-submit="addIngredientToAction(ingredientForm.$valid)" class="form-group" novalidate>
-                            <!-- New Ingredient Form -->
+                        <form class="hideForm ingredientForm" ng-if="action.formVisible" ng-submit="addIngredientToAction(ingredientForm.$valid)" novalidate>
                           <input type="text" ng-model="newIngredient.imperialQuantity" class="form-control" placeholder="amount">
                           <input type="text" ng-model="newIngredient.imperialUnits" class="form-control" placeholder="units">        
                           <input type="text" ng-model="newIngredient.ingredientName" class="form-control" placeholder="name">
                           <input type="text" ng-model="newIngredient.description" class="form-control" placeholder="description (optional)">
                           <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
-                          </form>
-                        </div>
-
-                        <a class="actionIngredientForm" href="" ng-click="toggleForm(this)">+ ingredient...</a>
-
+                        </form>
                       </div>
                     </div>
+                    <a data-nodrag class="formTrigger ingredientFormTrigger" href="" ng-click="toggleForm(this)">+ ingredient...</a>
                     <!-- Action Edit Modal -->
                     <div data-nodrag id="{{action.$$hashKey | chopObject}}" class="modal">
                       <div class="modal-content">
@@ -134,7 +129,7 @@
                     <input type="submit" class="btn btn-primary" ng-disabled="actionForm.$invalid" value="add">
                   </form>
                 </div>
-                <a href="" ng-click="toggleForm(this)">New action form!</a>
+                <a data-nodrag class="actionFormTrigger formTrigger" href="" ng-click="toggleForm(this)">+ action...</a>
               </div>
             </div>
             <!-- Transition div -->

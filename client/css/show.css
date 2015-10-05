@@ -45,20 +45,19 @@ body {
 }
 
 .vesselBox {
-	background-color: #FFE7CF;
 	background-color: #FFE05D;
-    padding-bottom: 18px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border-radius: 6px;
-    text-indent: 6px;
-    -webkit-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
-    -moz-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
-    box-shadow: 0 0 15px -5px rgba(61,60,61,1);
-    font-weight: 900;
-    color: gray;
-    font-size: 190%;
-    transition: all .09s linear;
+	padding-bottom: 35px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border-radius: 6px;
+	text-indent: 9px;
+	-webkit-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+	-moz-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+	box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+	font-weight: 900;
+	color: #8c8c8c;
+	font-size: 190%;
+	transition: all .09s linear;
 }
 
 .vesselBox:hover {
@@ -69,22 +68,17 @@ body {
 
 .transitionBox {
 	position: relative;
-	/*background-color: #8BB94D;*/
-	/*background-color: #FFE05D;*/
 	background-color: #FFF6CF;
-	/*border: 1px solid #FFCE00;*/
-	/*border: 1px solid #FFCE00;*/
-	min-height: 40px;
-	left: 65px;
+/* 	min-height: 40px; */
 	margin-bottom: -7px;
 	margin-top: -7px;
-	width: 85.5%;
-	text-indent: 6px;
+	width: 89%;
+	text-indent: 9px;
 	border-radius: 6px;
-	/* 	padding-left: 5px; */
-	/*     padding-top: 3px; */
+/* 		padding-left: 5px; */
+	/* padding-top: 3px; */
 	font-weight: 900;
-	color: gray;
+	color: #8c8c8c;
 	font-size: 190%;
 	-webkit-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
 	-moz-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
@@ -100,13 +94,10 @@ body {
 
 
 .actionBox {
-    /* background-color: #8BB94D; */
     background-color: #FFF6CF;
-    
-    /* border: 1px solid #FFCE00; */
     position: relative;
-    /*     min-height: 60px; */
-    padding-bottom: 18px;
+/*         min-height: 60px; */
+    padding-bottom: 40px;
     margin-bottom: 10px;
 	border-radius: 6px;
     left: 25px;
@@ -141,6 +132,8 @@ body {
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
+    position: relative;
+    left: 10px
 }
 
 .ingredientsBox {
@@ -178,9 +171,18 @@ body {
     opacity: 100;
 }
 
-.actionIngredientForm {
-    color: gray;
-    position: relative;
-    float: right;
-    font-size: 70%;
+.formTrigger {
+    font-size: 60%;
+    color: #D0D0D0;
+    position: absolute;
+/*     bottom: 3%; */
+    right: 10px;
+}
+
+.ingredientFormTrigger {
+	bottom: 3%;
+}
+
+.actionFormTrigger {
+	bottom: .8%;
 }
