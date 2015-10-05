@@ -113,8 +113,6 @@ body {
     box-shadow: 10px 10px 11px -1px rgba(174,178,181,1);
 }
 
-
-
 .timeIngredientsBox {
     display:flex;
     flex-direction: row;
@@ -141,8 +139,6 @@ body {
 }
 
 .ingredientBox {
-/*     background-color: #FF870C; */
-/*     background-color: #FFE7CF; */
     background-color: #F6C7D5;
     border-radius: 6px;
     margin-bottom: 6px;
@@ -169,6 +165,23 @@ body {
 .pencilTrashBox:hover {
     cursor: pointer;
     opacity: 100;
+}
+
+.ingredientForm {
+    background: #FFFCF2;
+    float: right;
+    width: 90%
+}
+
+
+.actionFormFlex {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.actionForm {
+	background: #FFFCF2;
+	width: 87%;
 }
 
 .formTrigger {

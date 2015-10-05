@@ -86,13 +86,15 @@
                         </ol>
 
                         <!-- New Ingredient Form -->
-                        <form class="hideForm ingredientForm" ng-if="action.formVisible" ng-submit="addIngredientToAction(ingredientForm.$valid)" novalidate>
-                          <input type="text" ng-model="newIngredient.imperialQuantity" class="form-control" placeholder="amount">
-                          <input type="text" ng-model="newIngredient.imperialUnits" class="form-control" placeholder="units">        
-                          <input type="text" ng-model="newIngredient.ingredientName" class="form-control" placeholder="name">
-                          <input type="text" ng-model="newIngredient.description" class="form-control" placeholder="description (optional)">
-                          <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
-                        </form>
+                        <div class="ingredientForm hideForm">
+                          <form name="ingredientForm" ng-if="action.formVisible" ng-submit="addIngredientToAction(ingredientForm.$valid)" novalidate>
+                            <input type="text" ng-model="newIngredient.imperialQuantity" class="form-control" placeholder="amount">
+                            <input type="text" ng-model="newIngredient.imperialUnits" class="form-control" placeholder="units">        
+                            <input type="text" ng-model="newIngredient.ingredientName" class="form-control" placeholder="name">
+                            <input type="text" ng-model="newIngredient.description" class="form-control" placeholder="description (optional)">
+                            <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
+                          </form>
+                        </div>
                       </div>
                     </div>
                     <a data-nodrag class="formTrigger ingredientFormTrigger" href="" ng-click="toggleForm(this)">+ ingredient...</a>
@@ -110,6 +112,16 @@
                     </div>
                   </li>
                 </ol>
+
+                <div class="hideForm actionFormFlex" ng-if="vessel.formVisible">
+                  <form class="actionForm" name="actionForm" ng-submit="addAction(actionForm.$valid)" class="form-group" novalidate>
+                    <input type="text" ng-model="newAction.actionName" class="form-control" placeholder="new action">
+                    <input type="number" ng-model="newAction.time" class="form-control" placeholder="duration">
+                    <input type="text" ng-model="newAction.description" class="form-control" placeholder="description (optional)">     
+                    <input type="submit" class="btn btn-primary" ng-disabled="actionForm.$invalid" value="add">
+                  </form>
+                </div>
+
                 <!-- Vessel Edit Modal -->
                 <div data-nodrag id="{{vessel.$$hashKey | chopObject}}" class="modal">
                   <div class="modal-content">
@@ -120,14 +132,6 @@
                   <div class="modal-footer">
                     <a href="#/create" class="modal-action modal-close waves-effect waves-green btn-flat">Done</a>
                   </div>
-                </div>
-                <div class="hideForm" ng-if="vessel.formVisible">
-                  <form name="actionForm" ng-submit="addAction(actionForm.$valid)" class="form-group" novalidate>
-                    <input type="text" ng-model="newAction.actionName" class="form-control" placeholder="new action">
-                    <input type="number" ng-model="newAction.time" class="form-control" placeholder="duration">
-                    <input type="text" ng-model="newAction.description" class="form-control" placeholder="description (optional)">     
-                    <input type="submit" class="btn btn-primary" ng-disabled="actionForm.$invalid" value="add">
-                  </form>
                 </div>
                 <a data-nodrag class="actionFormTrigger formTrigger" href="" ng-click="toggleForm(this)">+ action...</a>
               </div>
