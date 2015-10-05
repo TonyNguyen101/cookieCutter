@@ -57,7 +57,7 @@
                     <div class="timeIngredientsBox">                      
                       <div class="timeBox">
                         <div>{{action.time}}</div>
-                        <i class="material-icons">query_builder</i>
+                        <i class="material-icons" ng-show="action.time">query_builder</i>
                       </div>
                       <div ui-tree="movementOptions" class="ingredientsBox">
                         <ol ui-tree-nodes ng-model='action.ingredients' data-type='action'>
@@ -92,7 +92,10 @@
                             <input type="text" ng-model="newIngredient.imperialUnits" class="form-control" placeholder="units">        
                             <input type="text" ng-model="newIngredient.ingredientName" class="form-control" placeholder="name">
                             <input type="text" ng-model="newIngredient.description" class="form-control" placeholder="description (optional)">
-                            <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add">
+                            
+                            <input type="submit" class="btn-flat right disabled" ng-disabled="ingredientForm.$invalid" value="add">
+
+                            <!-- <input type="submit" class="btn btn-primary" ng-disabled="ingredientForm.$invalid" value="add"> -->
                           </form>
                         </div>
                       </div>
@@ -112,13 +115,12 @@
                     </div>
                   </li>
                 </ol>
-
                 <div class="hideForm actionFormFlex" ng-if="vessel.formVisible">
                   <form class="actionForm" name="actionForm" ng-submit="addAction(actionForm.$valid)" class="form-group" novalidate>
                     <input type="text" ng-model="newAction.actionName" class="form-control" placeholder="new action">
                     <input type="number" ng-model="newAction.time" class="form-control" placeholder="duration">
-                    <input type="text" ng-model="newAction.description" class="form-control" placeholder="description (optional)">     
-                    <input type="submit" class="btn btn-primary" ng-disabled="actionForm.$invalid" value="add">
+                    <input type="text" ng-model="newAction.description" class="form-control" placeholder="description (optional)">                         
+                    <input type="submit" class="btn-flat right disabled" ng-disabled="actionForm.$invalid" value="add">
                   </form>
                 </div>
 
@@ -161,28 +163,38 @@
 
       <div class="newVesselAndTransitionBox">        
           <!-- Add Vessel Form -->
-          <div class="hideForm" ng-if="formVisible">
-            <form name="vesselForm" ng-submit="addVessel(vesselForm.$valid)" class="form-group" novalidate>
-              <input type="text" ng-model="newVessel.vesselName" class="form-control" placeholder="new vessel">
-              <input type="text" ng-model="newVessel.description" class="form-control" placeholder="description (optional)">                    
-              <input type="submit" class="btn btn-primary" ng-disabled="vesselForm.$invalid" value="add">
-            </form>
-          </div>
-          <a href="" ng-click="toggleVesselForm()">Add a vessel</a>
-          
+          <div class="addVesselBox">
+            <div class="hideForm" ng-if="formVisible">
+              <form name="vesselForm" ng-submit="addVessel(vesselForm.$valid)" class="form-group" novalidate>
+                <input type="text" ng-model="newVessel.vesselName" class="form-control" placeholder="new vessel">
+                <input type="text" ng-model="newVessel.description" class="form-control" placeholder="description (optional)">                    
+                <input type="submit" class="btn-flat right" ng-disabled="vesselForm.$invalid" value="add">
+              </form>
+            </div>
+            <!-- <br> -->
+            <a class="waves-effect waves-light btn-flat" ng-click="toggleVesselForm()">+ vessel...</a>
+
+          </div>  
           <!-- Add Transition Form -->
-          <div class="hideForm" ng-if="transitionFormVisible">
-            <form name="vesselForm" ng-submit="addVessel(vesselForm.$valid)" class="form-group" novalidate>
-              <input type="text" ng-model="newVessel.vesselName" class="form-control" placeholder="transition">
-              <ng-model='newVessel.transition' ng-init="newVessel.transition = 'true'">                    
-              <input type="submit" class="btn btn-primary" ng-disabled="vesselForm.$invalid" value="add">
-            </form>
+          <div class="addTransitionBox">
+            <div class="hideForm" ng-if="transitionFormVisible">
+              <form name="vesselForm" ng-submit="addVessel(vesselForm.$valid)" class="form-group" novalidate>
+                <input type="text" ng-model="newVessel.vesselName" class="form-control" placeholder="transition">
+                <ng-model='newVessel.transition' ng-init="newVessel.transition = 'true'">                    
+                <input type="submit" class="btn-flat right" ng-disabled="vesselForm.$invalid" value="add">
+              </form>
+            </div>
+            <!-- <br> -->
+            <a class="waves-effect waves-light btn-flat" ng-click="toggleTransitionForm()">+ transition...</a>
           </div>
-          <a href="" ng-click="toggleTransitionForm()">Add a transition</a>
       </div>
-      <button ng-click='saveRecipe()'>Publish </button>
-      <button ng-click='startNewRecipe()'>Build New Recipe</button>
-      <button ng-click='deleteRecipe()'>Delete Recipe</button>
+
+      <div class="newVesselAndTransitionBox">
+        <a class="waves-effect waves-light btn-flat" ng-click='saveRecipe()'>Publish </a>
+        <a class="waves-effect waves-light btn-flat" ng-click='startNewRecipe()'>Build New Recipe</a>
+        <a class="waves-effect waves-light btn-flat" ng-click='deleteRecipe()'>Delete Recipe</a>
+      </div>
+
     </div> <!-- col l6 m6 s12 right -->
   </div>  
 

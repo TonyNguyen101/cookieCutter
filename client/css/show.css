@@ -26,7 +26,7 @@ body {
     color: #FFFCF2;
     font-size: 190%;
 /*         width: 99%; */
-    padding: 0px;
+    padding: 0;
 }
 
 .showTime {
@@ -170,7 +170,8 @@ body {
 .ingredientForm {
     background: #FFFCF2;
     float: right;
-    width: 90%
+    width: 90%;
+    opacity: .8;
 }
 
 
@@ -182,6 +183,7 @@ body {
 .actionForm {
 	background: #FFFCF2;
 	width: 87%;
+    opacity: .8;
 }
 
 .formTrigger {
@@ -199,3 +201,42 @@ body {
 .actionFormTrigger {
 	bottom: .8%;
 }
+
+.newVesselAndTransitionBox {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-between;
+    align-items: flex-start;
+    background-color: #E0E0E0;
+    opacity: .8;
+    min-height: 40px;
+    border-radius: 6px;
+    margin-bottom: 9px;
+}
+
+.addVesselBox {
+    border-radius: 6px;
+    width: 50%;
+}
+
+.addTransitionBox {
+    border-radius: 6px;
+    width: 50%;
+}
+.bottomButtons {
+    color: #D0D0D0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
