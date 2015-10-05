@@ -12,9 +12,14 @@ body {
 }
 
 .headings {
-    color: #FE0C51;
+    /*color: #FE0C51;*/
+    color: #9e9e9e;
     font-weight: 900;
     font-size: 190%
+}
+
+.recipeHead {
+    margin: 40px;
 }
 .showImg {
 	width: 100%;
@@ -40,8 +45,35 @@ body {
 	background-color: #FFAF5D;
 }
 
+.showGuide {
+    padding: 10px;
+}
+
+.raised {
+    /*border: 1px solid black;*/
+    border-radius: 6px;
+    -webkit-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    -moz-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+    box-shadow: 0 0 15px -5px rgba(61,60,61,1);
+
+}
+
+.recipeForm {
+    margin: 30px;
+}
+
 .recipeOl {
     padding-left: 0;
+}
+
+.allIngredientsForm {
+    margin-bottom: 30px;
+}
+
+.allIngredentsMovable {
+    font-weight: 900;
+    color: #8c8c8c;
+	font-size: 31px
 }
 
 .vesselBox {
@@ -56,7 +88,7 @@ body {
 	box-shadow: 0 0 15px -5px rgba(61,60,61,1);
 	font-weight: 900;
 	color: #8c8c8c;
-	font-size: 190%;
+	font-size: 31px;
 	transition: all .09s linear;
 }
 

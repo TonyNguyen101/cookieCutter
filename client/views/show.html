@@ -3,9 +3,9 @@
 <button ng-click="goToEditPage()">Edit</button>
 <div class="container">
 	<div class="row">
-		<div ng-class='mainColumn' ng-model="oneRecipe">
-			<h2 class="card-title grey-text">{{oneRecipe.title}}</h2>				
-		  <div class="recipeHead z-depth-1">
+		<div ng-class='mainColumn' ng-model="oneRecipe">	
+		  <div class="recipeHead z-depth-1 showGuide">
+		  	<h2 class="card-title grey-text">{{oneRecipe.title}}</h2>		
 		    <img class="showImg" src="{{oneRecipe.images[0]}}" alt="images/thumb_default.png">
 		    <div class="row showTimeServings center">
 		      <div class="col l6 m6 s6 center showTime">
@@ -23,24 +23,31 @@
 		  </div>
 			<div class="row">
 				<div ng-class="ingredientsColumn"> <!-- Ingredients Column -->
-					<h5 class="card-title grey-text">Ingredients</h5>
-					<div class="ingredientHead z-depth-1">
-					 	<ul class="collection">
-					    <!-- <li class="collection-header"><h5>Ingredients</h5></li> -->
-					    <li ng-repeat='ingredient in oneRecipe.allIngredients' class="collection-item">
-					      {{ingredient.imperialQuantity}}
-					      {{ingredient.imperialUnits}}                        
-					      {{ingredient.ingredientName}}         
-					    </li>
-					  </ul>
+					<div class="raised showGuide">
+			     <table>
+			        <thead>
+			          <tr>
+			            <h5 class="headings">INGREDIENTS</h5>
+			          </tr>
+			        </thead>
+			        <tbody>
+			          <tr ng-repeat='ingredient in oneRecipe.allIngredients'>
+			            <td>{{ingredient.imperialQuantity}}</td>
+			            <td>{{ingredient.imperialUnits}}</td>
+			            <td>{{ingredient.ingredientName}}</td>
+			          </tr>
+			        </tbody>
+			      </table>
+			     </div>
 					</div>
-				</div>
 				<div ng-class="guideColumn">	<!-- Guide Column -->
-					<h5 class="card-title grey-text">Guide</h5>
+					<div class="raised showGuide">
+					<h5 class="headings">GUIDE</h5>
+					<div class="divider"></div>
 						<!-- movementOptions are not in the SHOW page -->
 				    <!-- change data-drag-enabled to true when borrowing: place boolean variable in $scope and change it when the user clicks borrow button    -->
 				    <div ui-tree data-drag-enabled="false"> <!-- Vessel div -->
-				      <ol ui-tree-nodes ng-model="oneRecipe.vessels" data-type='recipe'>
+				      <ol ui-tree-nodes class="recipeOl" ng-model="oneRecipe.vessels" data-type='recipe'>
 				        <li ui-tree-node ui-tree-handle ng-repeat='vessel in oneRecipe.vessels' data-type='vessel'>   
 				          <div class="vesselBox" class="z-depth-1" ng-if="!vessel.transition">
 				            {{vessel.vesselName}}
@@ -72,7 +79,11 @@
 				        </li>
 				      </ol>
 				    </div>  
+
+				    </div>
+
 				</div>
+
 			</div>
 		</div>
 		
