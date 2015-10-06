@@ -3,7 +3,8 @@ body {
 }
 
 .nav-wrapper {
-    background-color: #FE0C51;
+    /*background-color: #FE0C51;*/
+    background-color: brown;
 }
 
 .brand-logo {
@@ -21,6 +22,21 @@ body {
 .recipeHead {
     margin: 40px;
 }
+
+.showCommandBar {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-between;
+    align-items: flex-start;
+    background-color: #E0E0E0;
+    opacity: .8;
+    min-height: 40px;
+    border-radius: 6px;
+    margin-bottom: 9px;   
+}
+
 .showImg {
 	width: 100%;
 	max-height: 400px;
@@ -47,6 +63,7 @@ body {
 
 .showGuide {
     padding: 10px;
+    margin-bottom: 20px;
 }
 
 .raised {
@@ -101,17 +118,16 @@ body {
 .transitionBox {
 	position: relative;
 	background-color: #FFF6CF;
-/* 	min-height: 40px; */
+	/* 	min-height: 40px; */
 	margin-bottom: -7px;
 	margin-top: -7px;
 	width: 89%;
-	text-indent: 9px;
+	padding-left: 9px;
+	margin:auto;
 	border-radius: 6px;
-/* 		padding-left: 5px; */
-	/* padding-top: 3px; */
 	font-weight: 900;
 	color: #8c8c8c;
-	font-size: 190%;
+	font-size: 31px;
 	-webkit-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
 	-moz-box-shadow: 0 0 15px -5px rgba(61,60,61,1);
 	box-shadow: 0 0 15px -5px rgba(61,60,61,1);
@@ -257,18 +273,7 @@ body {
     border-radius: 6px;
     width: 50%;
 }
+
 .bottomButtons {
     color: #D0D0D0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
