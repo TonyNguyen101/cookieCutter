@@ -132,6 +132,12 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
   	}	
 	};
 
+	$scope.showRecipe = function (oneRecipeId) {
+		console.log(oneRecipeId);
+		$location.path('/recipe/' + oneRecipeId);	
+	};
+
+
 	angular.element(document).ready(function() {
 		$('.modal-trigger').leanModal();
   });
@@ -196,8 +202,8 @@ app.controller('ShowController', ['$scope', '$location', '$http', '$routeParams'
 		// Two recipe comparison view
 		} else { 
 			$scope.mainColumn = "col l6 m6 s6";
-			$scope.ingredientsColumn = "col l11 m11 s11";
-			$scope.guideColumn = "col l11 m11 s11";
+			$scope.ingredientsColumn = "col l12 m12 s12";
+			$scope.guideColumn = "col l12 m12 s12";
 		}
 		$scope.compareRecipe = !$scope.compareRecipe;
 	};

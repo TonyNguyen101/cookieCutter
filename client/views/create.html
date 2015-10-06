@@ -174,7 +174,6 @@
                   <a href="#/create" class="modal-action modal-close waves-effect waves-green btn-flat">Done</a>
                 </div>
               </div>
-
             </div>
           </li>
         </ol>
@@ -209,7 +208,7 @@
       </div>
 
       <div class="newVesselAndTransitionBox">
-        <a class="waves-effect waves-light btn-flat" ng-click='saveRecipe()'>Publish </a>
+        <a class="waves-effect waves-light btn-flat" ng-click='showRecipe(Recipe._id); saveRecipe()'>Publish </a>
         <a class="waves-effect waves-light btn-flat" ng-click='startNewRecipe()'>Build New Recipe</a>
         <a class="waves-effect waves-light btn-flat" ng-click='deleteRecipe()'>Delete Recipe</a>
       </div>
