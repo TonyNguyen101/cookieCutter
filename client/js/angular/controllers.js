@@ -14,11 +14,18 @@ app.controller('CreateController', ['$scope', '$location', '$http', 'Recipe', fu
 			$http.post('/api/recipes', $scope.Recipe)
 			.then(function (returnedObject) {
 				console.log(returnedObject.data.message);
-				console.log(returnedObject.data._id);					
+				console.log(returnedObject.data._id);
+				// $location.path('/recipe/' + $scope.Recipe._id);					
 				if (returnedObject.data._id){
 					$scope.Recipe._id = returnedObject.data._id;
+					$location.path('/recipe/' + $scope.Recipe._id);			
+				} else {
+					$location.path('/recipe/' + $scope.Recipe._id);		
 				}
-			}, function (error) {
+			}, 
+
+
+			 function (error) {
 				console.log(error);
 			});
 		}	

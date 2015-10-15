@@ -66,6 +66,14 @@ body {
     margin-bottom: 20px;
 }
 
+p {
+	font-size: larger;
+}
+
+td {
+	font-size: 22px; 
+}
+
 .raised {
     /*border: 1px solid black;*/
     border-radius: 6px;
