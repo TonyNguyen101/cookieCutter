@@ -39,7 +39,7 @@ var recipeSchema = new mongoose.Schema({
 	// allIngredients Array w/ nested ingredients: for faster ingredient search
 	allIngredients: [{
 		ingredientName: String,
-		imperialQuantity: Number,
+		imperialQuantity: String,
 		imperialUnits: String,
 		description: String
 	}],
